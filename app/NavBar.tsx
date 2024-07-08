@@ -1,4 +1,9 @@
-import { SignedIn, SignedOut } from "@clerk/nextjs";
+import {
+  SignedIn,
+  SignedOut,
+  SignInButton,
+  SignOutButton,
+} from "@clerk/nextjs";
 
 const NavBar = () => {
   return (
@@ -6,10 +11,10 @@ const NavBar = () => {
       <h1>minilist.</h1>
       <div>
         <SignedOut>
-          <span>login</span>
+          <SignInButton />
         </SignedOut>
         <SignedIn>
-          <span>logout</span>
+          <SignOutButton />
         </SignedIn>
       </div>
     </nav>
