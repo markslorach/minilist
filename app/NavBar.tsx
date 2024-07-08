@@ -12,10 +12,14 @@ const NavBar = () => {
       <Link href="/">minilist.</Link>
       <div>
         <SignedOut>
-          <SignInButton />
+          <SignInButton>
+            sign in
+          </SignInButton>
         </SignedOut>
         <SignedIn>
-          <SignOutButton />
+          <SignOutButton>
+            sign out
+          </SignOutButton>
         </SignedIn>
       </div>
     </nav>
