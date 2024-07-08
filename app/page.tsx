@@ -18,10 +18,7 @@ export default async function Home() {
       <SignedIn>
         <h2>
           Welcome back,{" "}
-          {user?.emailAddresses.map((user) => (
-            <span key={user.id}>{user.emailAddress}</span>
-          ))}
-          .
+          {user?.firstName ? user.firstName : user?.emailAddresses[0].emailAddress}.          
         </h2>
       </SignedIn>
     </main>
