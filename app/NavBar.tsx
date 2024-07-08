@@ -6,11 +6,14 @@ import {
 } from "@clerk/nextjs";
 import Link from "next/link";
 
+// Components
+import ThemeSwitch from "./ThemeSwitch";
+
 const NavBar = () => {
   return (
     <nav className="flex justify-between h-20 items-center">
       <Link href="/">minilist.</Link>
-      <div>
+      <div className="items-center flex space-x-4">
         <SignedOut>
           <SignInButton>
             sign in
@@ -21,6 +24,7 @@ const NavBar = () => {
             sign out
           </SignOutButton>
         </SignedIn>
+        <ThemeSwitch/>
       </div>
     </nav>
   );

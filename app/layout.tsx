@@ -6,6 +6,7 @@ import { ClerkProvider } from "@clerk/nextjs";
 // Components
 import NavBar from "./NavBar";
 import Footer from "./Footer";
+import { ThemeProvider } from "next-themes";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -21,13 +22,15 @@ export default function RootLayout({
 }>) {
   return (
     <ClerkProvider>
-      <html lang="en">
+      <html lang="en" suppressHydrationWarning>
         <body className={inter.className}>
-          <main className="flex flex-col min-h-screen container max-w-3xl">
-            <NavBar />
-            <div className="flex-grow">{children}</div>
-            <Footer />
-          </main>
+          <ThemeProvider attribute="class" enableSystem={false} defaultTheme="light">
+            <main className="flex flex-col min-h-screen container max-w-3xl">
+              <NavBar />
+              <div className="flex-grow">{children}</div>
+              <Footer />
+            </main>
+          </ThemeProvider>
         </body>
       </html>
     </ClerkProvider>
