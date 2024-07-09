@@ -1,10 +1,17 @@
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { CirclePlus } from "lucide-react";
+import { CirclePlus, Trash, Pencil } from "lucide-react";
 import prisma from "@/prisma/client";
 import { SignedIn } from "@clerk/nextjs";
 import UserWelcome from "./UserWelcome";
 import Heading from "./components/Heading";
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "@/components/ui/accordion";
+import { Checkbox } from "@/components/ui/checkbox";
 
 export default async function Home() {
   const tasks = await prisma.task.findMany();
@@ -26,6 +33,24 @@ export default async function Home() {
           </div>
         </form>
         <Heading className="py-10">Tasks</Heading>
+        <Accordion type="single" collapsible className="w-full">
+          {tasks.filter((task) => !task.completed).map((task) => (
+            <AccordionItem value={task.id.toString()} className="border-none">
+              <div className="flex items-center space-x-3">
+                <Checkbox />
+                <div className="w-full">
+                  <AccordionTrigger>{task.title}</AccordionTrigger>
+                </div>
+              </div>
+              <AccordionContent>
+                <div className="flex space-x-4 text-gray-400">
+                  <Pencil className="h-5 w-5" />
+                  <Trash className="h-5 w-5" />
+                </div>
+              </AccordionContent>
+            </AccordionItem>
+          ))}
+        </Accordion>
         <Heading className="py-10">Completed</Heading>
       </SignedIn>
     </main>
