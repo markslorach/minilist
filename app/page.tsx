@@ -24,14 +24,14 @@ export default async function Home() {
   });
 
   return (
-    <main className="py-20">
+    <main className="py-16">
       <UserWelcome />
       <SignedIn>
         <AddTaskForm />
         <Heading className="pt-10 pb-2">Tasks</Heading>
         <p className="pb-10 text-sm text-gray-500 dark:text-gray-400">
-          Click the checkbox to mark a task as completed or click a task to see
-          task actions.
+          Click the checkbox to mark a task as complete or click a task to see a
+          tasks actions.
         </p>
         <Accordion type="single" collapsible className="w-full">
           {tasks
@@ -57,7 +57,33 @@ export default async function Home() {
               </AccordionItem>
             ))}
         </Accordion>
+
         <Heading className="py-10">Completed</Heading>
+        <Accordion type="single" collapsible className="w-full">
+          {tasks
+            .filter((task) => task.completed)
+            .map((task) => (
+              <AccordionItem
+                key={task.id}
+                value={task.id.toString()}
+                className="border-none"
+              >
+                <div className="flex items-center space-x-3">
+                  <Checkbox />
+                  <div className="w-full">
+                    <AccordionTrigger>
+                      <s>{task.title}</s>
+                    </AccordionTrigger>
+                  </div>
+                </div>
+                <AccordionContent>
+                  <div className="text-gray-400">
+                    <Trash className="h-5 w-5" />
+                  </div>
+                </AccordionContent>
+              </AccordionItem>
+            ))}
+        </Accordion>
       </SignedIn>
     </main>
   );
