@@ -12,9 +12,17 @@ import {
   AccordionTrigger,
 } from "@/components/ui/accordion";
 import { Checkbox } from "@/components/ui/checkbox";
+import { currentUser } from "@clerk/nextjs/server";
 
 export default async function Home() {
-  const tasks = await prisma.task.findMany();
+  const user = await currentUser();
+  const tasks = await prisma.task.findMany({
+    where: {
+      user: {
+        email: user?.emailAddresses[0].emailAddress as string,
+      },
+    },
+  });
 
   return (
     <main className="py-20">
