@@ -1,9 +1,8 @@
 "use client";
-import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { Plus } from "lucide-react";
 import { createTask } from "./actions/taskActions";
 import { useRef } from "react";
+import AddTaskButton from "./AddTaskButton";
 
 const AddTaskForm = () => {
   const ref = useRef<HTMLFormElement>(null);
@@ -21,11 +20,10 @@ const AddTaskForm = () => {
           type="text"
           name="task"
           placeholder="What do you want to do?"
+          required
           className="border-none bg-transparent dark:bg-transparent px-0"
         />
-        <Button className="bg-transparent dark:bg-transparent hover:bg-transparent dark:hover:bg-transparent text-gray-500 dark:text-gray-400 p-0">
-          <Plus />
-        </Button>
+        <AddTaskButton />
       </div>
     </form>
   );

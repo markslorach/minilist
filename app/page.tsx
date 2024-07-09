@@ -29,12 +29,19 @@ export default async function Home() {
       <SignedIn>
         <AddTaskForm />
         <Heading className="pt-10 pb-2">Tasks</Heading>
-        <p className="pb-10 text-sm text-gray-500 dark:text-gray-400">Click the checkbox to mark a task as completed or click a task to see task actions.</p>
+        <p className="pb-10 text-sm text-gray-500 dark:text-gray-400">
+          Click the checkbox to mark a task as completed or click a task to see
+          task actions.
+        </p>
         <Accordion type="single" collapsible className="w-full">
           {tasks
             .filter((task) => !task.completed)
             .map((task) => (
-              <AccordionItem value={task.id.toString()} className="border-none">
+              <AccordionItem
+                key={task.id}
+                value={task.id.toString()}
+                className="border-none"
+              >
                 <div className="flex items-center space-x-3">
                   <Checkbox />
                   <div className="w-full">
