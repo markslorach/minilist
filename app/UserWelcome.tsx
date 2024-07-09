@@ -3,9 +3,14 @@ import { currentUser } from "@clerk/nextjs/server";
 import { SignedIn, SignedOut, SignInButton } from "@clerk/nextjs";
 
 const UserWelcome = async () => {
-  // looks at passing a user and tasks as props - user could be null - null check?
   const user = await currentUser();
-  const tasks = await prisma.task.findMany();
+  const tasks = await prisma.task.findMany({
+    where: {
+      user: {
+        email: user?.emailAddresses[0].emailAddress as string,
+      },
+    },
+  });
 
   return (
     <section>

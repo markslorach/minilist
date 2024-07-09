@@ -9,6 +9,7 @@ datasource db {
 
 model User {
   id             Int      @id @default(autoincrement())
+  email          String   @unique
   name           String?
   xata_id        String   @unique(map: "User__pgroll_new_xata_id_key") @default(dbgenerated("('rec_'::text || (xata_private.xid())::text)"))
   xata_version   Int      @default(0)
