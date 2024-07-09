@@ -1,25 +1,31 @@
-import { SignedIn, SignedOut, SignInButton } from "@clerk/nextjs";
-import { currentUser } from "@clerk/nextjs/server";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { CirclePlus } from "lucide-react";
+import prisma from "@/prisma/client";
+import { SignedIn } from "@clerk/nextjs";
+import UserWelcome from "./UserWelcome";
 
 export default async function Home() {
-  const user = await currentUser();
+  const tasks = await prisma.task.findMany();
 
   return (
     <main className="py-20">
-      <SignedOut>
-        <h2>
-          Please{" "}
-          <span className="text-blue-500">
-            <SignInButton>sign in</SignInButton>
-          </span>{" "}
-          to see your tasks for today.
-        </h2>
-      </SignedOut>
+      <UserWelcome />
       <SignedIn>
-        <h2>
-          Welcome back,{" "}
-          {user?.firstName ? user.firstName : user?.emailAddresses[0].emailAddress}.          
-        </h2>
+        <form action="">
+          <div className="flex space-x-2">
+            <Input
+              type="text"
+              placeholder="What do you want to do?"
+              className="border-none bg-transparent dark:bg-transparent px-0"
+            />
+            <Button className="bg-transparent dark:bg-transparent hover:bg-transparent dark:hover:bg-transparent text-gray-500 dark:text-gray-400 p-0">
+              <CirclePlus />
+            </Button>
+          </div>
+        </form>
+        <h1 className="py-10 text-xl font-semibold">Tasks</h1>
+        <h1 className="py-10 text-xl font-semibold">Completed</h1>
       </SignedIn>
     </main>
   );
