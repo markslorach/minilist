@@ -15,7 +15,7 @@ const AddTaskForm = () => {
         await createTask(formData);
       }}
     >
-      <div className="flex space-x-2">
+      <div className="flex space-x-4">
         <Input
           type="text"
           name="task"
