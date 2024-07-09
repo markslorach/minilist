@@ -28,7 +28,8 @@ export default async function Home() {
       <UserWelcome />
       <SignedIn>
         <AddTaskForm />
-        <Heading className="py-10">Tasks</Heading>
+        <Heading className="pt-10 pb-2">Tasks</Heading>
+        <p className="pb-10 text-sm text-gray-500 dark:text-gray-400">Click the checkbox to mark a task as completed or click a task to see task actions.</p>
         <Accordion type="single" collapsible className="w-full">
           {tasks
             .filter((task) => !task.completed)
