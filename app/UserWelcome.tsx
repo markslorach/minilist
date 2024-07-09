@@ -1,6 +1,7 @@
 import prisma from "@/prisma/client";
 import { currentUser } from "@clerk/nextjs/server";
 import { SignedIn, SignedOut, SignInButton } from "@clerk/nextjs";
+import Heading from "./components/Heading";
 
 const UserWelcome = async () => {
   const user = await currentUser();
@@ -15,21 +16,21 @@ const UserWelcome = async () => {
   return (
     <section>
       <SignedOut>
-        <h2 className="text-xl font-semibold">
+        <Heading>
           Welcome! Please{" "}
           <span className="text-blue-500">
             <SignInButton>sign in</SignInButton>
           </span>{" "}
           to see your tasks for today.
-        </h2>
+        </Heading>
       </SignedOut>
 
       <SignedIn>
-        <h2 className="pb-10 text-xl font-semibold">
+        <Heading className="pb-10">
           Welcome back, {user?.firstName}. You have{" "}
           <span className="text-blue-500">{tasks.length}</span>{" "}
           {tasks.length === 1 ? "task" : "tasks"} pending.
-        </h2>
+        </Heading>
       </SignedIn>
     </section>
   );

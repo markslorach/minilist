@@ -4,6 +4,7 @@ import { CirclePlus } from "lucide-react";
 import prisma from "@/prisma/client";
 import { SignedIn } from "@clerk/nextjs";
 import UserWelcome from "./UserWelcome";
+import Heading from "./components/Heading";
 
 export default async function Home() {
   const tasks = await prisma.task.findMany();
@@ -24,8 +25,8 @@ export default async function Home() {
             </Button>
           </div>
         </form>
-        <h1 className="py-10 text-xl font-semibold">Tasks</h1>
-        <h1 className="py-10 text-xl font-semibold">Completed</h1>
+        <Heading className="py-10">Tasks</Heading>
+        <Heading className="py-10">Completed</Heading>
       </SignedIn>
     </main>
   );
