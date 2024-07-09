@@ -19,7 +19,7 @@ const AddTaskForm = () => {
         <Input
           type="text"
           name="task"
-          placeholder="What do you want to do?"
+          placeholder="What do you want to get done today?"
           required
           className="border-none bg-transparent dark:bg-transparent px-0"
         />

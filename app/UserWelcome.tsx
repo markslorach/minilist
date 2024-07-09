@@ -13,6 +13,8 @@ const UserWelcome = async () => {
     },
   });
 
+  const taskCount = tasks.filter((task) => !task.completed).length;
+
   return (
     <section>
       <SignedOut>
@@ -28,7 +30,7 @@ const UserWelcome = async () => {
       <SignedIn>
         <Heading className="pb-10">
           Welcome back, {user?.firstName}. You have{" "}
-          <span className="text-blue-500">{tasks.length}</span>{" "}
+          <span className="text-blue-500">{taskCount}</span>{" "}
           {tasks.length === 1 ? "task" : "tasks"} pending.
         </Heading>
       </SignedIn>

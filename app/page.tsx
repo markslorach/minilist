@@ -49,41 +49,33 @@ export default async function Home() {
                   </div>
                 </div>
                 <AccordionContent>
-                  <div className="flex space-x-4 text-gray-400">
-                    <Pencil className="h-5 w-5" />
-                    <Trash className="h-5 w-5" />
+                  <div className="flex space-x-4">
+                    <Pencil className="h-5 w-5 text-gray-600" />
+                    <Trash className="h-5 w-5 text-red-400" />
                   </div>
                 </AccordionContent>
               </AccordionItem>
             ))}
         </Accordion>
 
-        <Heading className="py-10">Completed</Heading>
-        <Accordion type="single" collapsible className="w-full">
+        <Heading className="pt-10 pb-2">Completed</Heading>
+        <p className="pb-10 text-sm text-gray-500 dark:text-gray-400">
+          Your completed tasks will clear at the end of each day.
+        </p>
+        <div className="space-y-4">
           {tasks
             .filter((task) => task.completed)
             .map((task) => (
-              <AccordionItem
-                key={task.id}
-                value={task.id.toString()}
-                className="border-none"
-              >
+              <div key={task.id}>
                 <div className="flex items-center space-x-3">
                   <Checkbox />
-                  <div className="w-full">
-                    <AccordionTrigger>
-                      <s>{task.title}</s>
-                    </AccordionTrigger>
-                  </div>
+                  <p className="text-sm">
+                    <s>{task.title}</s>
+                  </p>
                 </div>
-                <AccordionContent>
-                  <div className="text-gray-400">
-                    <Trash className="h-5 w-5" />
-                  </div>
-                </AccordionContent>
-              </AccordionItem>
+              </div>
             ))}
-        </Accordion>
+        </div>
       </SignedIn>
     </main>
   );
