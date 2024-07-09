@@ -1,6 +1,4 @@
-import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import { CirclePlus, Trash, Pencil } from "lucide-react";
+import { Trash, Pencil } from "lucide-react";
 import prisma from "@/prisma/client";
 import { SignedIn } from "@clerk/nextjs";
 import UserWelcome from "./UserWelcome";

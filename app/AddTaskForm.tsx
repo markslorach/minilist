@@ -1,13 +1,15 @@
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { CirclePlus } from "lucide-react"
+import { createTask } from "./actions/taskActions"
 
 const AddTaskForm = () => {
   return (
-    <form action="">
+    <form action={createTask}>
     <div className="flex space-x-2">
       <Input
         type="text"
+        name="task"
         placeholder="What do you want to do?"
         className="border-none bg-transparent dark:bg-transparent px-0"
       />
