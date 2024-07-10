@@ -35,9 +35,9 @@ const UpdateTaskForm = ({
         setUpdateTask(false);
         await updateTask(formData);
       }}
-      className="flex justify-between items-center w-full sm:w-1/2"
+      className="flex justify-between items-center w-full"
     >
-      <div>
+      <div className="w-full">
         <Input name="taskId" className="hidden" value={task.id} />
         <Input
           type="text"
