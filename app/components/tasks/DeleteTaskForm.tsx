@@ -8,7 +8,7 @@ type Props = {
 
 const DeleteTaskForm = ({ taskId }: Props) => {
   return (
-    <form
+    <form className="flex"
       action={async (formData: FormData) => {
         await deleteTask(formData);
       }}

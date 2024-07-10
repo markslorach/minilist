@@ -49,9 +49,9 @@ const TaskComponent = ({ tasks }: { tasks: Task[] }) => {
                     <AccordionTrigger>{task.title}</AccordionTrigger>
                   </div>
                 </div>
-                <AccordionContent>
+                <AccordionContent className="h-16 flex items-center">
                   {!updateTask ? (
-                    <div className="flex space-x-4">
+                    <div className="flex space-x-4 items-center w-full">
                       <Pencil
                         onClick={() => setUpdateTask(true)}
                         className="h-5 w-5 text-gray-600 dark:text-gray-400"
