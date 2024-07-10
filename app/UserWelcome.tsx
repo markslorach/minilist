@@ -14,6 +14,14 @@ const UserWelcome = async () => {
   });
 
   const taskCount = tasks.filter((task) => !task.completed).length;
+  const currentHour = new Date().getUTCHours();
+
+  const greeting =
+    currentHour < 12
+      ? "Good morning"
+      : currentHour < 18
+      ? "Good afternoon"
+      : "Good evening";
 
   return (
     <section>
@@ -29,7 +37,7 @@ const UserWelcome = async () => {
 
       <SignedIn>
         <Heading className="pb-10">
-          Welcome back, {user?.firstName}. You have{" "}
+          {greeting}, {user?.firstName}. You have{" "}
           <span className="text-blue-500">{taskCount}</span>{" "}
           {taskCount === 1 ? "task" : "tasks"} pending.
         </Heading>
