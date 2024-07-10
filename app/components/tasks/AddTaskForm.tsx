@@ -10,7 +10,7 @@ const AddTaskForm = () => {
 
   useEffect(() => {
     if (inputRef.current) {
-      inputRef.current.focus();
+      inputRef.current.focus()
     }
   }, []);
 
