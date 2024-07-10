@@ -1,6 +1,6 @@
 "use client";
 import { Input } from "@/components/ui/input";
-import { useRef } from "react";
+import { useEffect, useRef } from "react";
 import UpdateTaskButton from "./UpdateTaskButton";
 import { updateTask } from "@/app/actions/taskActions";
 import { X } from "lucide-react";
@@ -19,6 +19,13 @@ const UpdateTaskForm = ({
   setUpdateTask: (value: boolean) => void;
 }) => {
   const ref = useRef<HTMLFormElement>(null);
+  const inputRef = useRef<HTMLInputElement>(null);
+
+  useEffect(() => {
+    if (inputRef.current) {
+      inputRef.current.focus();
+    }
+  }, []);
 
   return (
     <form
@@ -38,6 +45,7 @@ const UpdateTaskForm = ({
           placeholder={task.title}
           required
           className="border-none bg-transparent dark:bg-transparent p-0 pr-2"
+          ref={inputRef}
         />
       </div>
       <div className="flex space-x-2">

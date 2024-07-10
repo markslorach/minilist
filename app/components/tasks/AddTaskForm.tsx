@@ -1,11 +1,18 @@
 "use client";
 import { Input } from "@/components/ui/input";
 import { createTask } from "../../actions/taskActions";
-import { useRef } from "react";
+import { useEffect, useRef } from "react";
 import AddTaskButton from "./AddTaskButton";
 
 const AddTaskForm = () => {
   const ref = useRef<HTMLFormElement>(null);
+  const inputRef = useRef<HTMLInputElement>(null);
+
+  useEffect(() => {
+    if (inputRef.current) {
+      inputRef.current.focus();
+    }
+  }, []);
 
   return (
     <form
@@ -22,6 +29,7 @@ const AddTaskForm = () => {
           placeholder="What do you want to get done today?"
           required
           className="border-none bg-transparent dark:bg-transparent px-0"
+          ref={inputRef}
         />
         <AddTaskButton />
       </div>
