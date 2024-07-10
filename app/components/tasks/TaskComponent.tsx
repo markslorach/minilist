@@ -25,31 +25,36 @@ const TaskComponent = ({ tasks }: { tasks: Task[] }) => {
         Click the checkbox to mark a task as complete or click a task to see a
         tasks actions.
       </p>
-
-      <Accordion type="single" collapsible className="w-full">
-        {tasks
-          .filter((task) => !task.completed)
-          .map((task) => (
-            <AccordionItem
-              key={task.id}
-              value={task.id.toString()}
-              className="border-none"
-            >
-              <div className="flex items-center space-x-3">
-                <CompleteTaskForm task={task} />
-                <div className="w-full">
-                  <AccordionTrigger>{task.title}</AccordionTrigger>
+      {tasks.filter((task) => !task.completed).length < 1 ? (
+        <p className="text-sm">
+          Squeaky clean! Add some tasks above to get started.
+        </p>
+      ) : (
+        <Accordion type="single" collapsible className="w-full">
+          {tasks
+            .filter((task) => !task.completed)
+            .map((task) => (
+              <AccordionItem
+                key={task.id}
+                value={task.id.toString()}
+                className="border-none"
+              >
+                <div className="flex items-center space-x-3">
+                  <CompleteTaskForm task={task} />
+                  <div className="w-full">
+                    <AccordionTrigger>{task.title}</AccordionTrigger>
+                  </div>
                 </div>
-              </div>
-              <AccordionContent>
-                <div className="flex space-x-4">
-                  <Pencil className="h-5 w-5 text-gray-600 dark:text-gray-400" />
-                  <DeleteTaskForm taskId={task.id} />
-                </div>
-              </AccordionContent>
-            </AccordionItem>
-          ))}
-      </Accordion>
+                <AccordionContent>
+                  <div className="flex space-x-4">
+                    <Pencil className="h-5 w-5 text-gray-600 dark:text-gray-400" />
+                    <DeleteTaskForm taskId={task.id} />
+                  </div>
+                </AccordionContent>
+              </AccordionItem>
+            ))}
+        </Accordion>
+      )}
 
       <Heading className="pt-10 pb-2">Completed</Heading>
       <p className="pb-10 text-sm text-gray-500 dark:text-gray-400">

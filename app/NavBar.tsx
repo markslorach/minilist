@@ -5,6 +5,7 @@ import {
   SignOutButton,
 } from "@clerk/nextjs";
 import Link from "next/link";
+import { Check } from 'lucide-react';
 
 // Components
 import ThemeSwitch from "./ThemeSwitch";
@@ -12,7 +13,7 @@ import ThemeSwitch from "./ThemeSwitch";
 const NavBar = () => {
   return (
     <nav className="flex justify-between h-20 items-center">
-      <Link href="/">minilist.</Link>
+      <Link href="/" className="flex items-center"><Check className="mr-0.5 text-blue-500"/>minilist.</Link>
       <div className="items-center flex space-x-4">
         <SignedOut>
           <SignInButton>
