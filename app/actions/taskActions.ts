@@ -59,3 +59,17 @@ export async function completeTask(formData: FormData) {
 
   revalidatePath("/");
 }
+
+// Clear Completed Tasks
+export async function clearCompletedTasks() {
+  const userEmail = await currentUser();
+  await prisma.task.deleteMany({
+    where: {
+      completed: true,
+      user: {
+        email: userEmail?.emailAddresses[0].emailAddress,
+      },
+    },
+  });
+  revalidatePath("/");
+}

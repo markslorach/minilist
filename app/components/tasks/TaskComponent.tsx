@@ -12,6 +12,7 @@ import { Button } from "@/components/ui/button";
 import CompleteTaskForm from "./CompleteTaskForm";
 import { useState } from "react";
 import UpdateTaskForm from "./UpdateTaskForm";
+import { clearCompletedTasks } from "@/app/actions/taskActions";
 
 type Task = {
   id: number;
@@ -46,9 +47,7 @@ const TaskComponent = ({ tasks }: { tasks: Task[] }) => {
                 <div className="flex items-center space-x-3">
                   <CompleteTaskForm task={task} />
                   <div className="w-full">
-                    <AccordionTrigger>
-                      {task.title}
-                    </AccordionTrigger>
+                    <AccordionTrigger>{task.title}</AccordionTrigger>
                   </div>
                 </div>
                 <AccordionContent className="h-16 flex items-center">
@@ -78,7 +77,7 @@ const TaskComponent = ({ tasks }: { tasks: Task[] }) => {
         {tasks
           .filter((task) => task.completed)
           .map((task) => (
-            <div key={task.id}>
+            <div key={task.id} className="mb-6">
               <div className="flex items-center space-x-3">
                 <CompleteTaskForm task={task} />
                 <p className="text-sm line-through">
@@ -88,11 +87,16 @@ const TaskComponent = ({ tasks }: { tasks: Task[] }) => {
               </div>
             </div>
           ))}
+        {tasks.filter((task) => task.completed).length > 0 && (
+          <Button
+            onClick={() => clearCompletedTasks()}
+            variant="secondary"
+            size="sm"
+          >
+            Clear completed tasks
+          </Button>
+        )}
       </div>
-
-      <Button variant="secondary" size="sm">
-        Clear completed tasks
-      </Button>
     </section>
   );
 };
