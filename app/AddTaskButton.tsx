@@ -6,12 +6,14 @@ const AddTaskButton = () => {
   const { pending } = useFormStatus();
 
   return (
-    <Button
+    <button
+      type="submit"
+      aria-label="add task"
       disabled={pending}
-      className="bg-transparent dark:bg-transparent hover:bg-transparent dark:hover:bg-transparent text-gray-500 dark:text-gray-400 p-0"
+      className="text-gray-500 dark:text-gray-400"
     >
       <Plus />
-    </Button>
+    </button>
   );
 };
 
