@@ -76,30 +76,25 @@ const TaskComponent = ({ tasks }: { tasks: Task[] }) => {
         Your completed tasks will clear at the end of each day.
       </p>
 
-      <div className="space-y-4 mb-10">
+      <div className="space-y-3 mb-10">
         {tasks
           .filter((task) => task.completed)
           .map((task) => (
-            <div key={task.id} className="mb-6">
-              <div className="flex items-center space-x-3">
-                <CompleteTaskForm task={task} />
-                <p className="text-sm line-through">
-                  {task.title}
-                  {/* {task.title.charAt(0).toUpperCase() + task.title.slice(1)} */}
-                </p>
-              </div>
+            <div key={task.id} className="flex items-center space-x-3">
+              <CompleteTaskForm task={task} />
+              <p className="text-sm line-through">{task.title}</p>
             </div>
           ))}
-        {tasks.filter((task) => task.completed).length > 0 && (
-          <Button
-            onClick={() => clearCompletedTasks()}
-            variant="secondary"
-            size="sm"
-          >
-            Clear completed tasks
-          </Button>
-        )}
       </div>
+      {tasks.filter((task) => task.completed).length > 0 && (
+        <Button
+          onClick={() => clearCompletedTasks()}
+          variant="secondary"
+          size="sm"
+        >
+          Clear completed tasks
+        </Button>
+      )}
     </section>
   );
 };
