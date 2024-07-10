@@ -20,3 +20,14 @@ export async function createTask(formData: FormData) {
   });
   revalidatePath("/");
 }
+
+//Delete Task
+export async function deleteTask(formData: FormData) {
+  const taskId = formData.get("taskId") as string;
+  await prisma.task.delete({
+    where: {
+      id: parseInt(taskId),
+    },
+  });
+  revalidatePath("/");
+}

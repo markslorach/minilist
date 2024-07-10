@@ -12,6 +12,7 @@ import {
 import { Checkbox } from "@/components/ui/checkbox";
 import { currentUser } from "@clerk/nextjs/server";
 import AddTaskForm from "./AddTaskForm";
+import DeleteTaskForm from "./DeleteTaskForm";
 
 export default async function Home() {
   const user = await currentUser();
@@ -29,7 +30,7 @@ export default async function Home() {
       <SignedIn>
         <AddTaskForm />
         <Heading className="pt-10 pb-2">Tasks</Heading>
-        <p className="pb-10 text-sm text-gray-500 dark:text-gray-400">
+        <p className="pb-10 text-sm text-gray-500 dark:text-gray-400 text-balance">
           Click the checkbox to mark a task as complete or click a task to see a
           tasks actions.
         </p>
@@ -50,8 +51,8 @@ export default async function Home() {
                 </div>
                 <AccordionContent>
                   <div className="flex space-x-4">
-                    <Pencil className="h-5 w-5 text-gray-600" />
-                    <Trash className="h-5 w-5 text-red-400" />
+                    <Pencil className="h-5 w-5 text-gray-600 dark:text-gray-400" />
+                    <DeleteTaskForm taskId={task.id} />
                   </div>
                 </AccordionContent>
               </AccordionItem>
