@@ -1,3 +1,4 @@
+"use client";
 import { Pencil } from "lucide-react";
 import Heading from "./components/Heading";
 import {
@@ -10,13 +11,13 @@ import { Checkbox } from "@/components/ui/checkbox";
 import DeleteTaskForm from "./DeleteTaskForm";
 import { Button } from "@/components/ui/button";
 
-interface Task {
+type Task = {
   id: number;
   title: string;
   completed: boolean;
 };
 
-const TaskComponent = ({ tasks }: {tasks: Task[]}) => {
+const TaskComponent = ({ tasks }: { tasks: Task[] }) => {
   return (
     <section>
       <Heading className="pt-10 pb-2">Tasks</Heading>
@@ -24,6 +25,7 @@ const TaskComponent = ({ tasks }: {tasks: Task[]}) => {
         Click the checkbox to mark a task as complete or click a task to see a
         tasks actions.
       </p>
+
       <Accordion type="single" collapsible className="w-full">
         {tasks
           .filter((task) => !task.completed)
@@ -53,6 +55,7 @@ const TaskComponent = ({ tasks }: {tasks: Task[]}) => {
       <p className="pb-10 text-sm text-gray-500 dark:text-gray-400">
         Your completed tasks will clear at the end of each day.
       </p>
+
       <div className="space-y-4 mb-10">
         {tasks
           .filter((task) => task.completed)
@@ -65,6 +68,7 @@ const TaskComponent = ({ tasks }: {tasks: Task[]}) => {
             </div>
           ))}
       </div>
+
       <Button variant="secondary">Clear completed tasks</Button>
     </section>
   );

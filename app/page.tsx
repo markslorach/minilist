@@ -15,9 +15,7 @@ export default async function Home() {
         email: user?.emailAddresses[0].emailAddress as string,
       },
     },
-    orderBy: {
-      createdAt: "desc",
-    },
+    orderBy: [{ completed: "asc" }, { createdAt: "desc" }],
   });
 
   return (

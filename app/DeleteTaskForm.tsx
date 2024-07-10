@@ -10,7 +10,6 @@ const DeleteTaskForm = ({ taskId }: Props) => {
   return (
     <form
       action={async (formData: FormData) => {
-        "use server";
         await deleteTask(formData);
       }}
     >
