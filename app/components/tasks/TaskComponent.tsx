@@ -7,7 +7,6 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
-import { Checkbox } from "@/components/ui/checkbox";
 import DeleteTaskForm from "./DeleteTaskForm";
 import { Button } from "@/components/ui/button";
 import CompleteTaskForm from "./CompleteTaskForm";
