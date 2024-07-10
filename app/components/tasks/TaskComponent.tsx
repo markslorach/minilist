@@ -10,6 +10,8 @@ import {
 import DeleteTaskForm from "./DeleteTaskForm";
 import { Button } from "@/components/ui/button";
 import CompleteTaskForm from "./CompleteTaskForm";
+import { useState } from "react";
+import UpdateTaskForm from "./UpdateTaskForm";
 
 type Task = {
   id: number;
@@ -18,12 +20,14 @@ type Task = {
 };
 
 const TaskComponent = ({ tasks }: { tasks: Task[] }) => {
+  const [updateTask, setUpdateTask] = useState(false);
+
   return (
     <section>
       <Heading className="pt-10 pb-2">Tasks</Heading>
       <p className="pb-10 text-sm text-gray-500 dark:text-gray-400 text-balance">
-        Click the checkbox to mark a task as complete or click a task to see a
-        tasks actions.
+        Click a task&apos;s checkbox to mark it as complete, or click the task
+        to view its actions.
       </p>
       {tasks.filter((task) => !task.completed).length < 1 ? (
         <p className="text-sm">
@@ -46,10 +50,17 @@ const TaskComponent = ({ tasks }: { tasks: Task[] }) => {
                   </div>
                 </div>
                 <AccordionContent>
-                  <div className="flex space-x-4">
-                    <Pencil className="h-5 w-5 text-gray-600 dark:text-gray-400" />
-                    <DeleteTaskForm taskId={task.id} />
-                  </div>
+                  {!updateTask ? (
+                    <div className="flex space-x-4">
+                      <Pencil
+                        onClick={() => setUpdateTask(true)}
+                        className="h-5 w-5 text-gray-600 dark:text-gray-400"
+                      />
+                      <DeleteTaskForm taskId={task.id} />
+                    </div>
+                  ) : (
+                    <UpdateTaskForm task={task} setUpdateTask={setUpdateTask} />
+                  )}
                 </AccordionContent>
               </AccordionItem>
             ))}
@@ -74,7 +85,9 @@ const TaskComponent = ({ tasks }: { tasks: Task[] }) => {
           ))}
       </div>
 
-      <Button variant="secondary">Clear completed tasks</Button>
+      <Button variant="secondary" size="sm">
+        Clear completed tasks
+      </Button>
     </section>
   );
 };
