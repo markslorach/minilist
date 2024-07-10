@@ -35,13 +35,15 @@ export async function deleteTask(formData: FormData) {
 // Complete Task
 export async function completeTask(formData: FormData) {
   const taskId = formData.get("taskId") as string;
-  await prisma.task.update({
-    where: {
-      id: parseInt(taskId),
-    },
-    data: {
-      completed: true,
-    },
+
+  const task = await prisma.task.findUnique({
+    where: { id: parseInt(taskId) },
   });
+
+  await prisma.task.update({
+    where: { id: parseInt(taskId) },
+    data: { completed: !task?.completed },
+  });
+
   revalidatePath("/");
 }

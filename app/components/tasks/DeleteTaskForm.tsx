@@ -1,5 +1,5 @@
 import { Input } from "@/components/ui/input";
-import { deleteTask } from "./actions/taskActions";
+import { deleteTask } from "../../actions/taskActions";
 import DeleteTaskButton from "./DeleteTaskButton";
 
 type Props = {

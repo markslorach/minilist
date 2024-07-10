@@ -4,8 +4,8 @@ import { currentUser } from "@clerk/nextjs/server";
 
 // Components
 import UserWelcome from "./UserWelcome";
-import AddTaskForm from "./AddTaskForm";
-import TaskComponent from "./TaskComponent";
+import AddTaskForm from "./components/tasks/AddTaskForm";
+import TaskComponent from "./components/tasks/TaskComponent";
 
 export default async function Home() {
   const user = await currentUser();

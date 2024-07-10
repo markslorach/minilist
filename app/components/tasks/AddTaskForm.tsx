@@ -1,6 +1,6 @@
 "use client";
 import { Input } from "@/components/ui/input";
-import { createTask } from "./actions/taskActions";
+import { createTask } from "../../actions/taskActions";
 import { useRef } from "react";
 import AddTaskButton from "./AddTaskButton";
 

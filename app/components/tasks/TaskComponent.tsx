@@ -1,6 +1,6 @@
 "use client";
 import { Pencil } from "lucide-react";
-import Heading from "./components/Heading";
+import Heading from "../Heading";
 import {
   Accordion,
   AccordionContent,
@@ -10,6 +10,7 @@ import {
 import { Checkbox } from "@/components/ui/checkbox";
 import DeleteTaskForm from "./DeleteTaskForm";
 import { Button } from "@/components/ui/button";
+import CompleteTaskForm from "./CompleteTaskForm";
 
 type Task = {
   id: number;
@@ -36,7 +37,7 @@ const TaskComponent = ({ tasks }: { tasks: Task[] }) => {
               className="border-none"
             >
               <div className="flex items-center space-x-3">
-                <Checkbox />
+                <CompleteTaskForm task={task} />
                 <div className="w-full">
                   <AccordionTrigger>{task.title}</AccordionTrigger>
                 </div>
@@ -62,7 +63,7 @@ const TaskComponent = ({ tasks }: { tasks: Task[] }) => {
           .map((task) => (
             <div key={task.id}>
               <div className="flex items-center space-x-3">
-                <Checkbox />
+                <CompleteTaskForm task={task} />
                 <p className="text-sm line-through">{task.title}</p>
               </div>
             </div>
