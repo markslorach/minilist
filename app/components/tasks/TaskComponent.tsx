@@ -46,7 +46,9 @@ const TaskComponent = ({ tasks }: { tasks: Task[] }) => {
                 <div className="flex items-center space-x-3">
                   <CompleteTaskForm task={task} />
                   <div className="w-full">
-                    <AccordionTrigger>{task.title.charAt(0).toUpperCase() + task.title.slice(1)}</AccordionTrigger>
+                    <AccordionTrigger>
+                      {task.title}
+                    </AccordionTrigger>
                   </div>
                 </div>
                 <AccordionContent className="h-16 flex items-center">
@@ -79,7 +81,10 @@ const TaskComponent = ({ tasks }: { tasks: Task[] }) => {
             <div key={task.id}>
               <div className="flex items-center space-x-3">
                 <CompleteTaskForm task={task} />
-                <p className="text-sm line-through">{task.title.charAt(0).toUpperCase() + task.title.slice(1)}</p>
+                <p className="text-sm line-through">
+                  {task.title}
+                  {/* {task.title.charAt(0).toUpperCase() + task.title.slice(1)} */}
+                </p>
               </div>
             </div>
           ))}
