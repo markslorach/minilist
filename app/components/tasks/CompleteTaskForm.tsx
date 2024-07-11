@@ -15,7 +15,7 @@ const CompleteTaskForm = ({ task }: { task: Task }) => {
         await completeTask(formData);
       }}
     >
-      <Input name="taskId" className="hidden" value={task.id} />
+      <Input name="taskId" className="hidden" value={task.id} defaultValue={task.id} />
       <CompleteTaskButton task={task} />
     </form>
   );
