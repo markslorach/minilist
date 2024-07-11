@@ -37,7 +37,7 @@ const UserWelcome = async () => {
 
       <SignedIn>
         <Heading className="pb-10">
-          {greeting}, {`${user?.firstName?.charAt(0)}${user?.firstName?.slice(1)}`}. You have{" "}
+          {greeting}, {`${user?.firstName?.charAt(0).toUpperCase()}${user?.firstName?.slice(1)}`}. You have{" "}
           <span className="text-blue-500">{taskCount}</span>{" "}
           {taskCount === 1 ? "task" : "tasks"} pending.
         </Heading>
