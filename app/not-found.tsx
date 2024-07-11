@@ -9,7 +9,7 @@ const NotFound = () => {
       <NavBar />
       <section className="flex-grow py-16">
         <Heading className="pb-10">
-          It looks like youre lost.{" "}
+          It looks like you&apos;re lost.{" "}
           <Link href="/" className="text-blue-500">
             Return home
           </Link>
