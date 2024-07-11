@@ -50,9 +50,7 @@ const TaskComponent = ({ tasks }: { tasks: Task[] }) => {
             >
               <div className="flex items-center space-x-3">
                 <CompleteTaskForm task={task} />
-                <div className="w-full">
-                  <AccordionTrigger>{task.title}</AccordionTrigger>
-                </div>
+                <AccordionTrigger>{task.title}</AccordionTrigger>
               </div>
               <AccordionContent className="h-16 flex items-center">
                 {!updateTask ? (
