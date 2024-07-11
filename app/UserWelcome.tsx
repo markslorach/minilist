@@ -14,7 +14,10 @@ const UserWelcome = async () => {
   });
 
   const taskCount = tasks.filter((task) => !task.completed).length;
-  const currentHour = new Date().getUTCHours();
+
+  // Currently UK time
+  const currentHour = new Date().getUTCHours() + 1;
+  // console.log(currentHour)
 
   const greeting =
     currentHour < 12
