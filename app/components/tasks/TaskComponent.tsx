@@ -28,11 +28,11 @@ const TaskComponent = ({ tasks }: { tasks: Task[] }) => {
       <Heading className="pt-10 pb-2">Tasks</Heading>
       <div className="pb-10">
         {tasks.filter((task) => !task.completed).length < 1 ? (
-          <p className="text-sm text-gray-500 dark:text-gray-400 text-balance">
+          <p className="text-sm text-gray-500 dark:text-gray-400">
             <i>Squeaky</i> clean! Add some tasks above to get started.
           </p>
         ) : (
-          <p className="text-sm text-gray-500 dark:text-gray-400">
+          <p className="text-sm text-gray-500 dark:text-gray-400 sm:text-balance">
             Click a task&apos;s checkbox to mark it as complete, or click the
             task to view its actions.
           </p>
