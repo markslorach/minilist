@@ -7,7 +7,7 @@ const DeleteTaskButton = () => {
   return (
     <button type="submit" aria-label="delete task" disabled={pending}>
       {" "}
-      <Trash className="h-5 w-5 text-red-400" />
+      <Trash className="h-6 w-6 text-red-400" />
     </button>
   );
 };

@@ -59,7 +59,7 @@ const TaskComponent = ({ tasks }: { tasks: Task[] }) => {
                   <div className="flex space-x-4 items-center">
                     <Pencil
                       onClick={() => setUpdateTask(true)}
-                      className="h-5 w-5 text-gray-600 dark:text-gray-400 cursor-pointer"
+                      className="h-6 w-6 text-gray-600 dark:text-gray-400 cursor-pointer"
                     />
                     <DeleteTaskForm taskId={task.id} />
                   </div>

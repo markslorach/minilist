@@ -54,7 +54,7 @@ const UpdateTaskForm = ({
           aria-label="cancel task update"
           onClick={() => setUpdateTask(false)}
         >
-          <X className="w-5 h-5 text-red-400" />
+          <X className="w-7 h-7 text-red-400" />
         </button>
         <UpdateTaskButton />
       </div>

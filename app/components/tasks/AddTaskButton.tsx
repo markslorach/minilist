@@ -9,9 +9,8 @@ const AddTaskButton = () => {
       type="submit"
       aria-label="add task"
       disabled={pending}
-      className="text-gray-500 dark:text-gray-400"
     >
-      <Plus />
+      <Plus className="h-7 w-7" />
     </button>
   );
 };
