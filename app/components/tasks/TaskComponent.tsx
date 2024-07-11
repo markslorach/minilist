@@ -32,7 +32,7 @@ const TaskComponent = ({ tasks }: { tasks: Task[] }) => {
             <i>Squeaky</i> clean! Add some tasks above to get started.
           </p>
         ) : (
-          <p className="text-sm text-gray-500 dark:text-gray-400 text-balance">
+          <p className="text-sm text-gray-500 dark:text-gray-400">
             Click a task&apos;s checkbox to mark it as complete, or click the
             task to view its actions.
           </p>
