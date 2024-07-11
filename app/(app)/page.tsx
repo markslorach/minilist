@@ -3,10 +3,10 @@ import { SignedIn } from "@clerk/nextjs";
 import { currentUser } from "@clerk/nextjs/server";
 
 // Components
-import UserWelcome from "./UserWelcome";
-import AddTaskForm from "./components/tasks/AddTaskForm";
-import TaskComponent from "./components/tasks/TaskComponent";
+import UserWelcome from "../UserWelcome";
 import { Prisma } from "@prisma/client";
+import AddTaskForm from "../components/tasks/AddTaskForm";
+import TaskComponent from "../components/tasks/TaskComponent";
 
 export default async function Home() {
   const user = await currentUser();
