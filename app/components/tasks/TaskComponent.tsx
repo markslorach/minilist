@@ -85,7 +85,8 @@ const TaskComponent = ({ tasks }: { tasks: Task[] }) => {
           </div>
         ))}
       </div>
-      {tasks.filter((task) => task.completed).length > 0 && (
+      
+      {taskComplete.length > 0 && (
         <Button
           onClick={() => clearCompletedTasks()}
           variant="secondary"

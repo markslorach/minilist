@@ -4,7 +4,6 @@ import { currentUser } from "@clerk/nextjs/server";
 
 // Components
 import UserWelcome from "../UserWelcome";
-import { Prisma } from "@prisma/client";
 import AddTaskForm from "../components/tasks/AddTaskForm";
 import TaskComponent from "../components/tasks/TaskComponent";
 
@@ -12,23 +11,27 @@ export default async function Home() {
   const user = await currentUser();
 
   if (user) {
+    const clerkEmail = user.emailAddresses[0].emailAddress;
+
     try {
-      await prisma.user.create({
-        data: {
-          email: user.emailAddresses[0].emailAddress,
-          name: user.firstName,
-        },
+      const existingUser = await prisma.user.findUnique({
+        where: { email: clerkEmail },
       });
-    } catch (error) {
-      if (
-        error instanceof Prisma.PrismaClientKnownRequestError &&
-        error.code === "P2002"
-      ) {
-        console.warn("User already exists:", user.username);
+
+      if (!existingUser) {
+        await prisma.user.create({
+          data: {
+            email: clerkEmail,
+            name: user.firstName,
+          },
+        });
+        console.log(`New user created: ${clerkEmail}`);
       } else {
-        console.error("Error creating user:", error);
-        throw error;
+        console.log(`User already exists: ${clerkEmail}`);
       }
+    } catch (error) {
+      console.error("Error finding or creating user:", error);
+      throw error;
     }
   }
 
