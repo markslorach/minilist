@@ -1,13 +1,13 @@
 import { LucideIcon, LoaderCircle } from "lucide-react";
 import { useFormStatus } from "react-dom";
 
-type IconColors = "red" | "green" | "blue"
+type IconColours = "red" | "green" | "blue";
 
 interface ActionButtonProps {
   icon: LucideIcon;
   label: string;
   disabled?: boolean;
-  iconColor?: IconColors;
+  colour?: IconColours;
   iconSize?: number;
 }
 
@@ -15,11 +15,11 @@ const FormActionButton = ({
   icon: Icon,
   label,
   disabled,
-  iconColor,
-  iconSize
+  colour,
+  iconSize,
 }: ActionButtonProps) => {
   const { pending } = useFormStatus();
-  const iconColorClass = iconColor ? `text-${iconColor}-400` : "";
+  const iconColorClass = colour ? `text-${colour}-400` : "";
 
   return (
     <button type="submit" aria-label={label} disabled={pending || disabled}>
