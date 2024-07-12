@@ -1,3 +1,4 @@
+import { cn } from "@/lib/utils";
 import { LucideIcon, LoaderCircle } from "lucide-react";
 import { useFormStatus } from "react-dom";
 
@@ -25,11 +26,11 @@ const FormActionButton = ({
     <button type="submit" aria-label={label} disabled={pending || disabled}>
       {pending ? (
         <LoaderCircle
-          className={`animate-spin ${iconColorClass}`}
+          className={cn("animate-spin", iconColorClass)}
           size={iconSize || 28}
         />
       ) : (
-        <Icon className={`${iconColorClass}`} size={iconSize} />
+        <Icon className={cn(iconColorClass)} size={iconSize} />
       )}
     </button>
   );
