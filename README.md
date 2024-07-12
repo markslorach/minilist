@@ -14,7 +14,7 @@ Minimilistic distraction free task manager.
 ### Working on
 - Optimistic UI to  eliminate server loading times
 - Better accordion solution for mobile
-- Code clean-up
+- Code clean-up and error handling
 
 ### Future updates
 - Projects for tasks
