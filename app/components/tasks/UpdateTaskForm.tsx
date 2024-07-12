@@ -1,9 +1,9 @@
 "use client";
 import { Input } from "@/components/ui/input";
 import { useEffect, useRef } from "react";
-import UpdateTaskButton from "./UpdateTaskButton";
 import { updateTask } from "@/app/actions/taskActions";
-import { X } from "lucide-react";
+import { X, Check} from "lucide-react";
+import FormActionButton from "../FormActionButton";
 
 type Task = {
   id: number;
@@ -54,9 +54,9 @@ const UpdateTaskForm = ({
           aria-label="cancel task update"
           onClick={() => setUpdateTask(false)}
         >
-          <X className="w-7 h-7 text-red-400" />
+          <X className="text-red-400" size={28} />
         </button>
-        <UpdateTaskButton />
+        <FormActionButton icon={Check} label="Update Task" iconColor="green" iconSize={28}/>
       </div>
     </form>
   );

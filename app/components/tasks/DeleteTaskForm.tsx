@@ -1,6 +1,7 @@
 import { Input } from "@/components/ui/input";
 import { deleteTask } from "../../actions/taskActions";
-import DeleteTaskButton from "./DeleteTaskButton";
+import { Trash } from "lucide-react";
+import FormActionButton from "../FormActionButton";
 
 type Props = {
   taskId: number;
@@ -14,7 +15,7 @@ const DeleteTaskForm = ({ taskId }: Props) => {
       }}
     >
       <Input name="taskId" className="hidden" value={taskId} />
-      <DeleteTaskButton />
+      <FormActionButton icon={Trash} label="Delete Task" iconColor="red" iconSize={25}/>
     </form>
   );
 };

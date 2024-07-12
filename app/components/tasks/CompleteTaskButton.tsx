@@ -1,4 +1,3 @@
-"use client";
 import { Circle, CircleCheck } from "lucide-react";
 import { useFormStatus } from "react-dom";
 
