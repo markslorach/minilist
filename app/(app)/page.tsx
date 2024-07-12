@@ -34,7 +34,6 @@ export default async function Home() {
       throw error; 
     }
   }
-  
 
   const tasks = await prisma.task.findMany({
     where: {
