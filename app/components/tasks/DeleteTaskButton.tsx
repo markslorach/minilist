@@ -1,4 +1,3 @@
-"use client";
 import { Trash, LoaderCircle } from "lucide-react";
 import { useFormStatus } from "react-dom";
 
