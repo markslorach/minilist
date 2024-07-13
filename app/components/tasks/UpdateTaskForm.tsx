@@ -56,7 +56,7 @@ const UpdateTaskForm = ({
         >
           <X className="text-red-400" size={28} />
         </button>
-        <FormActionButton icon={Check} label="Update Task" colour="green" iconSize={28}/>
+        <FormActionButton icon={Check} label="Update Task" className="text-green-400" iconSize={28}/>
       </div>
     </form>
   );

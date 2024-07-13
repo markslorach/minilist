@@ -15,7 +15,7 @@ const DeleteTaskForm = ({ taskId }: Props) => {
       }}
     >
       <Input name="taskId" className="hidden" value={taskId} />
-      <FormActionButton icon={Trash} label="Delete Task" colour="red" iconSize={25}/>
+      <FormActionButton icon={Trash} label="Delete Task" className="text-red-400" iconSize={25}/>
     </form>
   );
 };
