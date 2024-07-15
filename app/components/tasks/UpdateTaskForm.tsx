@@ -2,16 +2,16 @@
 import { Input } from "@/components/ui/input";
 import { useEffect, useRef } from "react";
 import { updateTask } from "@/app/actions/taskActions";
-import { X, Check} from "lucide-react";
-import FormActionButton from "../FormActionButton";
+import { X, Check } from "lucide-react";
 import { Task } from "@prisma/client";
+import FormActionButton from "../FormActionButton";
 
 const UpdateTaskForm = ({
   task,
-  setUpdateTask,
+  setIsUpdating,
 }: {
   task: Task;
-  setUpdateTask: (value: boolean) => void;
+  setIsUpdating: (value: boolean) => void;
 }) => {
   const ref = useRef<HTMLFormElement>(null);
   const inputRef = useRef<HTMLInputElement>(null);
@@ -27,7 +27,7 @@ const UpdateTaskForm = ({
       ref={ref}
       action={async (formData) => {
         ref.current?.reset();
-        setUpdateTask(false);
+        setIsUpdating(false);
         await updateTask(formData);
       }}
       className="flex justify-between items-center w-full"
@@ -47,11 +47,16 @@ const UpdateTaskForm = ({
         <button
           type="button"
           aria-label="cancel task update"
-          onClick={() => setUpdateTask(false)}
+          onClick={() => setIsUpdating(false)}
         >
           <X className="text-red-400" size={28} />
         </button>
-        <FormActionButton icon={Check} label="Update Task" className="text-green-400" iconSize={28}/>
+        <FormActionButton
+          icon={Check}
+          label="Update Task"
+          className="text-green-400"
+          iconSize={28}
+        />
       </div>
     </form>
   );

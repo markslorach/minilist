@@ -5,9 +5,12 @@ import { currentUser } from "@clerk/nextjs/server";
 // Components
 import UserWelcome from "../UserWelcome";
 import TaskComponent from "../components/tasks/TaskComponent";
+import { getTasks } from "@/lib/tasks";
 
 export default async function Home() {
   const user = await currentUser();
+  const {tasks = []} = await getTasks();
+
 
   if (user) {
     const email = user.emailAddresses[0].emailAddress;
@@ -33,15 +36,6 @@ export default async function Home() {
       throw error;
     }
   }
-
-  const tasks = await prisma.task.findMany({
-    where: {
-      user: {
-        email: user?.emailAddresses[0].emailAddress as string,
-      },
-    },
-    orderBy: [{ completed: "asc" }, { xata_createdat: "desc" }],
-  });
 
   return (
     <main className="py-16">

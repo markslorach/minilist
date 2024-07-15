@@ -12,7 +12,7 @@ import { useState } from "react";
 import { Task } from "@prisma/client";
 
 const TaskItem = ({ task }: { task: Task }) => {
-  const [updateTask, setUpdateTask] = useState(false);
+  const [isUpdating, setIsUpdating] = useState(false);
 
   return (
     <AccordionItem
@@ -27,17 +27,17 @@ const TaskItem = ({ task }: { task: Task }) => {
         </div>
       </div>
       <AccordionContent className="h-16 flex items-center">
-        {!updateTask ? (
+        {!isUpdating ? (
           <div className="flex space-x-4 items-center">
             <Pencil
-              onClick={() => setUpdateTask(true)}
+              onClick={() => setIsUpdating(true)}
               className="text-gray-600 dark:text-gray-400 cursor-pointer"
               size={25}
             />
             <DeleteTaskForm taskId={task.id} />
           </div>
         ) : (
-          <UpdateTaskForm task={task} setUpdateTask={setUpdateTask} />
+          <UpdateTaskForm task={task} setIsUpdating={setIsUpdating} />
         )}
       </AccordionContent>
     </AccordionItem>
