@@ -3,9 +3,9 @@ import { currentUser } from "@clerk/nextjs/server";
 
 // Get all tasks for the current user
 export async function getTasks() {
-  try {
-    const user = await currentUser();
+  const user = await currentUser();
 
+  try {
     if (!user) {
       return { error: "User not found" };
     }
@@ -26,9 +26,9 @@ export async function getTasks() {
 
 // Create a new task
 export async function createTask(title: string) {
-  try {
-    const user = await currentUser();
+  const user = await currentUser();
 
+  try {
     if (!user) {
       return { error: "User not found" };
     }

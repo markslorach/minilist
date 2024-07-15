@@ -1,11 +1,9 @@
 import prisma from "@/prisma/client";
 import { SignedIn } from "@clerk/nextjs";
 import { currentUser } from "@clerk/nextjs/server";
-
-// Components
-import UserWelcome from "../UserWelcome";
 import TaskComponent from "../components/tasks/TaskComponent";
 import { getTasks } from "@/lib/tasks";
+import UserGreeting from "../UserGreeting";
 
 export default async function Home() {
   const user = await currentUser();
@@ -38,7 +36,7 @@ export default async function Home() {
 
   return (
     <main className="py-16">
-      <UserWelcome />
+      <UserGreeting />
       <SignedIn>
         <TaskComponent tasks={tasks} />
       </SignedIn>
