@@ -4,7 +4,6 @@ import { currentUser } from "@clerk/nextjs/server";
 
 // Components
 import UserWelcome from "../UserWelcome";
-import AddTaskForm from "../components/tasks/AddTaskForm";
 import TaskComponent from "../components/tasks/TaskComponent";
 
 export default async function Home() {
@@ -48,7 +47,6 @@ export default async function Home() {
     <main className="py-16">
       <UserWelcome />
       <SignedIn>
-        <AddTaskForm />
         <TaskComponent tasks={tasks} />
       </SignedIn>
     </main>

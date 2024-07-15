@@ -1,17 +1,27 @@
-"use client"
-import Heading from "../Heading";
+"use client";
 import { Accordion } from "@/components/ui/accordion";
 import { Button } from "@/components/ui/button";
 import { clearCompletedTasks } from "@/app/actions/taskActions";
 import { Task } from "@prisma/client";
+import { useOptimistic } from "react";
 
 // Components
-import CompleteTaskForm from "./CompleteTaskForm";
+import Heading from "../Heading";
 import TaskItem from "./TaskItem";
+import CompleteTaskForm from "./CompleteTaskForm";
+import AddTaskForm from "./AddTaskForm";
 
 const TaskComponent = ({ tasks }: { tasks: Task[] }) => {
+ 
+  const [optimisticTasks, addOptimisticTask] = useOptimistic(
+    tasks,
+    (state, newTask: Task) => {
+      return [newTask, ...state];
+    }
+  );
+
+  const tasksPending = optimisticTasks.filter((task) => !task.completed);
   const taskComplete = tasks.filter((task) => task.completed);
-  const taskPending = tasks.filter((task) => !task.completed);
 
   const completedMessage = () => {
     switch (true) {
@@ -28,10 +38,12 @@ const TaskComponent = ({ tasks }: { tasks: Task[] }) => {
 
   return (
     <section>
+      <AddTaskForm addOptimisticTask={addOptimisticTask} />
+
       <Heading className="pt-10 pb-2">Tasks</Heading>
 
       <div className="pb-10">
-        {taskPending.length < 1 ? (
+        {tasksPending.length < 1 ? (
           <p className="text-sm text-gray-500 dark:text-gray-400">
             <i>Squeaky</i> clean! Add some tasks above to get started.
           </p>
@@ -44,7 +56,7 @@ const TaskComponent = ({ tasks }: { tasks: Task[] }) => {
       </div>
 
       <Accordion type="single" collapsible className="w-full">
-        {taskPending.map((task) => (
+        {tasksPending.map((task) => (
           <TaskItem key={task.id} task={task} />
         ))}
       </Accordion>
