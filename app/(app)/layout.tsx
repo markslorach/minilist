@@ -11,7 +11,7 @@ const AppLayout = ({ children }: { children: ReactNode }) => {
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
-        transition={{ duration: 0.6 }}
+        transition={{ duration: 1 }}
         className="flex-grow"
       >
         {children}

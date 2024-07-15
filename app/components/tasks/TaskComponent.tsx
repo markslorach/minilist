@@ -1,8 +1,6 @@
-"use client";
+"use client"
 import Heading from "../Heading";
-import {
-  Accordion,
-} from "@/components/ui/accordion";
+import { Accordion } from "@/components/ui/accordion";
 import { Button } from "@/components/ui/button";
 import { clearCompletedTasks } from "@/app/actions/taskActions";
 import { Task } from "@prisma/client";
@@ -10,6 +8,9 @@ import { Task } from "@prisma/client";
 // Components
 import CompleteTaskForm from "./CompleteTaskForm";
 import TaskItem from "./TaskItem";
+import { currentUser } from "@clerk/nextjs/server";
+import prisma from "@/prisma/client";
+import { revalidatePath } from "next/cache";
 
 const TaskComponent = ({ tasks }: { tasks: Task[] }) => {
   const taskComplete = tasks.filter((task) => task.completed);
