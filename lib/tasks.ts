@@ -23,3 +23,28 @@ export async function getTasks() {
     return { error: "Failed to fetch tasks" };
   }
 }
+
+// Create a new task
+export async function createTask(title: string) {
+  try {
+    const user = await currentUser();
+
+    if (!user) {
+      return { error: "User not found" };
+    }
+
+    const task = await prisma.task.create({
+      data: {
+        title: title,
+        user: {
+          connect: {
+            email: user?.emailAddresses[0].emailAddress,
+          },
+        },
+      },
+    });
+    return { task };
+  } catch (error) {
+    return { error: "Failed to create task" };
+  }
+}
