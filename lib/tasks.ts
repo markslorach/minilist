@@ -1,9 +1,15 @@
 import prisma from "@/prisma/client";
 import { currentUser } from "@clerk/nextjs/server";
 
+// Get all tasks for the current user
 export async function getTasks() {
   try {
     const user = await currentUser();
+
+    if (!user) {
+      return { error: "User not found" };
+    }
+
     const tasks = await prisma.task.findMany({
       where: {
         user: {
@@ -14,6 +20,6 @@ export async function getTasks() {
     });
     return { tasks };
   } catch (error) {
-    return { error };
+    return { error: "Failed to fetch tasks" };
   }
 }

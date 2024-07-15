@@ -9,8 +9,7 @@ import { getTasks } from "@/lib/tasks";
 
 export default async function Home() {
   const user = await currentUser();
-  const {tasks = []} = await getTasks();
-
+  const { tasks = [] } = await getTasks();
 
   if (user) {
     const email = user.emailAddresses[0].emailAddress;
