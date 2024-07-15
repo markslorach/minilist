@@ -4,12 +4,7 @@ import { useEffect, useRef } from "react";
 import { updateTask } from "@/app/actions/taskActions";
 import { X, Check} from "lucide-react";
 import FormActionButton from "../FormActionButton";
-
-type Task = {
-  id: number;
-  title: string;
-  completed: boolean;
-};
+import { Task } from "@prisma/client";
 
 const UpdateTaskForm = ({
   task,

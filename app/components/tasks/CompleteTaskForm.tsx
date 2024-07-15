@@ -1,12 +1,7 @@
 import { Input } from "@/components/ui/input";
 import { completeTask } from "../../actions/taskActions";
 import CompleteTaskButton from "./CompleteTaskButton";
-
-type Task = {
-  id: number;
-  title: string;
-  completed: boolean;
-};
+import { Task } from "@prisma/client";
 
 const CompleteTaskForm = ({ task }: { task: Task }) => {
   return (

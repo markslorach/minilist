@@ -4,10 +4,12 @@ import {
   Accordion,
 } from "@/components/ui/accordion";
 import { Button } from "@/components/ui/button";
-import CompleteTaskForm from "./CompleteTaskForm";
 import { clearCompletedTasks } from "@/app/actions/taskActions";
-import TaskItem from "./TaskItem";
 import { Task } from "@prisma/client";
+
+// Components
+import CompleteTaskForm from "./CompleteTaskForm";
+import TaskItem from "./TaskItem";
 
 const TaskComponent = ({ tasks }: { tasks: Task[] }) => {
   const taskComplete = tasks.filter((task) => task.completed);
@@ -29,7 +31,7 @@ const TaskComponent = ({ tasks }: { tasks: Task[] }) => {
   return (
     <section>
       <Heading className="pt-10 pb-2">Tasks</Heading>
-      
+
       <div className="pb-10">
         {taskPending.length < 1 ? (
           <p className="text-sm text-gray-500 dark:text-gray-400">
