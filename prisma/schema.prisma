@@ -11,11 +11,20 @@ model User {
   id             Int      @id @default(autoincrement())
   email          String   @unique
   name           String?
+  tasks          Task[]
+  lists          List[]
   xata_id        String   @unique(map: "User__pgroll_new_xata_id_key") @default(dbgenerated("('rec_'::text || (xata_private.xid())::text)"))
   xata_version   Int      @default(0)
   xata_createdat DateTime @default(now()) @db.Timestamptz(6)
   xata_updatedat DateTime @default(now()) @db.Timestamptz(6)
-  tasks          Task[]
+}
+
+model List {
+  id     Int    @id @default(autoincrement())
+  title  String
+  userId Int
+  user   User   @relation(fields: [userId], references: [id])
+  tasks  Task[]
 }
 
 model Task {
@@ -23,10 +32,11 @@ model Task {
   title          String
   completed      Boolean  @default(false)
   userId         Int
-  createdAt      DateTime @default(now())
+  listId         Int?
+  user           User     @relation(fields: [userId], references: [id])
+  list           List?    @relation(fields: [listId], references: [id])
   xata_updatedat DateTime @default(now()) @db.Timestamptz(6)
   xata_id        String   @unique(map: "Task__pgroll_new_xata_id_key") @default(dbgenerated("('rec_'::text || (xata_private.xid())::text)"))
   xata_version   Int      @default(0)
   xata_createdat DateTime @default(now()) @db.Timestamptz(6)
-  user           User     @relation(fields: [userId], references: [id])
 }

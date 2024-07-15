@@ -8,9 +8,6 @@ import { Task } from "@prisma/client";
 // Components
 import CompleteTaskForm from "./CompleteTaskForm";
 import TaskItem from "./TaskItem";
-import { currentUser } from "@clerk/nextjs/server";
-import prisma from "@/prisma/client";
-import { revalidatePath } from "next/cache";
 
 const TaskComponent = ({ tasks }: { tasks: Task[] }) => {
   const taskComplete = tasks.filter((task) => task.completed);
