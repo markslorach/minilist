@@ -1,6 +1,6 @@
 "use server";
-import { createTask } from "@/lib/tasks";
 import prisma from "@/prisma/client";
+import { createTask } from "@/lib/tasks";
 import { currentUser } from "@clerk/nextjs/server";
 import { revalidatePath } from "next/cache";
 
@@ -14,7 +14,7 @@ export async function createTaskAction(formData: FormData) {
   } finally {
     revalidatePath("/");
   }
-}
+  }
 
 // Update Task
 export async function updateTask(formData: FormData) {

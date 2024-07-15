@@ -6,9 +6,7 @@ export async function getTasks() {
   const user = await currentUser();
 
   try {
-    if (!user) {
-      return { error: "User not found" };
-    }
+    if (!user) return { error: "User not found" };
 
     const tasks = await prisma.task.findMany({
       where: {
@@ -29,9 +27,7 @@ export async function createTask(title: string) {
   const user = await currentUser();
 
   try {
-    if (!user) {
-      return { error: "User not found" };
-    }
+    if (!user) return { error: "User not found" };
 
     const task = await prisma.task.create({
       data: {

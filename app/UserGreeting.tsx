@@ -1,15 +1,18 @@
 import { currentUser } from "@clerk/nextjs/server";
 import { SignedIn, SignedOut, SignInButton } from "@clerk/nextjs";
-import Heading from "./components/Heading";
 import { getTasks } from "@/lib/tasks";
 import { userGreeting } from "@/utils/helpers";
+import Heading from "./components/Heading";
 
 const UserGreeting = async () => {
   const user = await currentUser();
   const { tasks = [] } = await getTasks();
 
   const taskCount = tasks.filter((task) => !task.completed).length;
-  const greeting = userGreeting()
+  const greeting = userGreeting();
+  const userName = user?.firstName
+    ? user.firstName.charAt(0).toUpperCase() + user.firstName.slice(1)
+    : "";
 
   return (
     <section>
@@ -25,11 +28,8 @@ const UserGreeting = async () => {
 
       <SignedIn>
         <Heading className="pb-10">
-          {greeting},{" "}
-          {`${user?.firstName?.charAt(0).toUpperCase()}${user?.firstName?.slice(
-            1
-          )}`}
-          . You have <span className="text-blue-500">{taskCount}</span>{" "}
+          {greeting}, {userName}. You have{" "}
+          <span className="text-blue-500">{taskCount}</span>{" "}
           {taskCount === 1 ? "task" : "tasks"} pending.
         </Heading>
       </SignedIn>
