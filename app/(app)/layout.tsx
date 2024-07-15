@@ -1,15 +1,24 @@
-import { ReactNode } from "react"
-import NavBar from "../NavBar"
-import Footer from "../Footer"
+"use client";
+import { ReactNode } from "react";
+import { motion } from "framer-motion";
+import NavBar from "../NavBar";
+import Footer from "../Footer";
 
-const AppLayout = ({children} : {children: ReactNode}) => {
+const AppLayout = ({ children }: { children: ReactNode }) => {
   return (
     <main className="flex flex-col min-h-dvh md:min-h-screen mx-auto max-w-3xl px-4 sm:px-10">
-    <NavBar />
-    <div className="flex-grow">{children}</div>
-    <Footer />
-  </main>
-  )
-}
+      <NavBar />
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 0.6 }}
+        className="flex-grow"
+      >
+        {children}
+      </motion.div>
+      <Footer />
+    </main>
+  );
+};
 
-export default AppLayout
+export default AppLayout;
