@@ -1,24 +1,19 @@
 "use server";
+import { createTask } from "@/lib/tasks";
 import prisma from "@/prisma/client";
 import { currentUser } from "@clerk/nextjs/server";
 import { revalidatePath } from "next/cache";
 
 // Create Task
-export async function createTask(formData: FormData) {
-  const userEmail = await currentUser();
-  const task = formData.get("task");
-
-  await prisma.task.create({
-    data: {
-      title: task as string,
-      user: {
-        connect: {
-          email: userEmail?.emailAddresses[0].emailAddress,
-        },
-      },
-    },
-  });
-  revalidatePath("/");
+export async function createTaskAction(formData: FormData) {
+  const task = formData.get("task") as string;
+  try {
+    await createTask(task);
+  } catch (error: any) {
+    return { error: "Failed to create task" };
+  } finally {
+    revalidatePath("/");
+  }
 }
 
 // Update Task

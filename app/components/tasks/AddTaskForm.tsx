@@ -1,6 +1,6 @@
 "use client";
 import { Input } from "@/components/ui/input";
-import { createTask } from "../../actions/taskActions";
+import { createTaskAction } from "../../actions/taskActions";
 import { useEffect, useRef } from "react";
 import { Plus } from "lucide-react";
 import { useFormStatus } from "react-dom";
@@ -33,7 +33,7 @@ const AddTaskForm = ({ addOptimisticTask }: any) => {
           xata_createdat: new Date(),
           pending: true,
         });
-        await createTask(formData);
+        await createTaskAction(formData);
       }}
     >
       <div className="flex space-x-4">
