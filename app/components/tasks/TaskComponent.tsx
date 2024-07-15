@@ -26,6 +26,19 @@ const TaskComponent = ({ tasks }: { tasks: Task[] }) => {
   const taskComplete = tasks.filter((task) => task.completed);
   const taskPending = tasks.filter((task) => !task.completed);
 
+  const completedMessage = () => {
+    switch (true) {
+      case taskComplete.length === 1:
+        return "You have 1 task completed.";
+      case taskComplete.length > 1 && taskComplete.length < 5:
+        return "Your completed tasks.";
+      case taskComplete.length >= 5:
+        return "Your last 5 completed tasks.";
+      default:
+        return "Complete a task to see it below.";
+    }
+  };
+
   return (
     <section>
       <Heading className="pt-10 pb-2">Tasks</Heading>
@@ -75,18 +88,20 @@ const TaskComponent = ({ tasks }: { tasks: Task[] }) => {
 
       <Heading className="pt-10 pb-2">Completed</Heading>
       <p className="pb-10 text-sm text-gray-500 dark:text-gray-400">
-        Your completed tasks will clear at the end of each day.
+        {completedMessage()}
       </p>
 
       <div className="space-y-3.5 mb-10">
-        {taskComplete.map((task) => (
-          <div key={task.id} className="flex items-center space-x-3">
-            <CompleteTaskForm task={task} />
-            <p className="text-sm line-through">{task.title}</p>
-          </div>
-        ))}
+        {taskComplete
+          .map((task) => (
+            <div key={task.id} className="flex items-center space-x-3">
+              <CompleteTaskForm task={task} />
+              <p className="text-sm line-through">{task.title}</p>
+            </div>
+          ))
+          .slice(0, 5)}
       </div>
-      
+
       {taskComplete.length > 0 && (
         <Button
           onClick={() => clearCompletedTasks()}
