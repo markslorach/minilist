@@ -12,12 +12,12 @@ export default async function Home() {
 
   if (user) {
     const email = user.emailAddresses[0].emailAddress;
-  
+
     try {
       const existingUser = await prisma.user.findUnique({
         where: { email },
       });
-  
+
       if (!existingUser) {
         await prisma.user.create({
           data: {
@@ -25,13 +25,13 @@ export default async function Home() {
             name: user.firstName,
           },
         });
-        console.log(`New user created`); 
+        console.log(`New user created`);
       } else {
-        console.log(`User already exists`); 
+        console.log(`User already exists`);
       }
     } catch (error) {
       console.error("Error finding or creating user:", error);
-      throw error; 
+      throw error;
     }
   }
 
@@ -41,7 +41,7 @@ export default async function Home() {
         email: user?.emailAddresses[0].emailAddress as string,
       },
     },
-    orderBy: [{ completed: "asc" }, { createdAt: "desc" }],
+    orderBy: [{ completed: "asc" }, { xata_createdat: "desc" }],
   });
 
   return (
