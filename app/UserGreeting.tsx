@@ -1,7 +1,7 @@
 import { currentUser } from "@clerk/nextjs/server";
 import { SignedIn, SignedOut, SignInButton } from "@clerk/nextjs";
 import { getTasks } from "@/lib/tasks";
-import { userGreeting } from "@/utils/helpers";
+import { capitaliseString, userGreeting } from "@/utils/helpers";
 import Heading from "./components/Heading";
 
 const UserGreeting = async () => {
@@ -10,9 +10,7 @@ const UserGreeting = async () => {
 
   const taskCount = tasks.filter((task) => !task.completed).length;
   const greeting = userGreeting();
-  const userName = user?.firstName
-    ? user.firstName.charAt(0).toUpperCase() + user.firstName.slice(1)
-    : "";
+  const userName = capitaliseString(user?.firstName as string);
 
   return (
     <section>

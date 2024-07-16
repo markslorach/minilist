@@ -9,3 +9,7 @@ export function userGreeting(offset = 1) {
       return "Good evening";
     }
   }
+
+export function capitaliseString(str: string = "User") {
+    return str.charAt(0).toUpperCase() + str.slice(1) 
+  }
