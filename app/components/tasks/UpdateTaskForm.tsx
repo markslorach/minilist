@@ -1,7 +1,7 @@
 "use client";
 import { Input } from "@/components/ui/input";
 import { useEffect, useRef } from "react";
-import { updateTask } from "@/app/actions/taskActions";
+import { updateTaskAction } from "@/app/actions/taskActions";
 import { X, Check } from "lucide-react";
 import { Task } from "@prisma/client";
 import FormActionButton from "../FormActionButton";
@@ -28,11 +28,17 @@ const UpdateTaskForm = ({
     <form
       ref={ref}
       action={async (formData) => {
-        const updatedTask = formData.get("task") as string;
-        ref.current?.reset();
-        updateOptimisticTask({ ...task, title: updatedTask });
-        await updateTask(formData);
-        setIsUpdating(false);
+        try {
+          const updatedTask = formData.get("task") as string;
+          ref.current?.reset();
+          updateOptimisticTask({ ...task, title: updatedTask });
+          await updateTaskAction(formData);
+        } catch (error) {
+          console.error("Error updating task:", error);
+          updateOptimisticTask(task);
+        } finally {
+          setIsUpdating(false);
+        }
       }}
       className="flex justify-between items-center w-full"
     >

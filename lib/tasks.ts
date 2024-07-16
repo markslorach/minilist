@@ -46,10 +46,10 @@ export async function getTasks() {
 }
 
 // Update a task
-export async function updateTask(taskId: number, title: string) {
+export async function updateTask(taskId: string, title: string) {
   try {
     const task = await prisma.task.update({
-      where: { id: taskId },
+      where: { id: parseInt(taskId) },
       data: { title: title },
     });
     return { task };

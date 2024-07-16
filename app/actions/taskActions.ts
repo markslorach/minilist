@@ -1,6 +1,6 @@
 "use server";
 import prisma from "@/prisma/client";
-import { createTask } from "@/lib/tasks";
+import { createTask, updateTask } from "@/lib/tasks";
 import { currentUser } from "@clerk/nextjs/server";
 import { revalidatePath } from "next/cache";
 
@@ -17,15 +17,16 @@ export async function createTaskAction(formData: FormData) {
   }
 
 // Update Task
-export async function updateTask(formData: FormData) {
+export async function updateTaskAction(formData: FormData) {
   const taskId = formData.get("taskId") as string;
   const newTask = formData.get("task") as string;
-
-  await prisma.task.update({
-    where: { id: parseInt(taskId) },
-    data: { title: newTask },
-  });
-  revalidatePath("/");
+  try {
+    await updateTask(taskId, newTask);
+  } catch (error: any) {
+    return { error: "Failed to update task" };
+  } finally {
+    revalidatePath("/");
+  }
 }
 
 // Delete Task
