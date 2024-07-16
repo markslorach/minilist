@@ -3,7 +3,6 @@ import { SignedIn } from "@clerk/nextjs";
 import { currentUser } from "@clerk/nextjs/server";
 import TaskComponent from "../components/tasks/TaskComponent";
 import { getTasks } from "@/lib/tasks";
-import UserGreeting from "../UserGreeting";
 
 export default async function Home() {
   const user = await currentUser();
@@ -36,9 +35,8 @@ export default async function Home() {
 
   return (
     <main className="py-16">
-      <UserGreeting />
       <SignedIn>
-        <TaskComponent tasks={tasks} />
+        <TaskComponent tasks={tasks} user={user?.firstName} />
       </SignedIn>
     </main>
   );

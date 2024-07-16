@@ -13,8 +13,14 @@ import CompleteTaskForm from "./CompleteTaskForm";
 import AddTaskForm from "./AddTaskForm";
 import TasksUserInfo from "../TasksUserInfo";
 import TasksCompletedUserInfo from "../TasksCompletedUserInfo";
+import UserGreeting from "@/app/UserGreeting";
 
-const TaskComponent = ({ tasks }: { tasks: Task[] }) => {
+type Props = {
+  tasks: Task[];
+  user: any;
+};
+
+const TaskComponent = ({ tasks, user }: Props) => {
   const [isClearing, setIsClearing] = useState(false);
   const [optimisticTasks, setOptimisticTasks] = useOptimistic<Task[]>(tasks);
 
@@ -33,6 +39,7 @@ const TaskComponent = ({ tasks }: { tasks: Task[] }) => {
 
   return (
     <section>
+      <UserGreeting user={user} tasks={optimisticTasks}/>
       <AddTaskForm addOptimisticTask={addOptimisticTask} />
 
       <Heading className="pt-10 pb-2">Tasks</Heading>

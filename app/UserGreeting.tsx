@@ -1,16 +1,17 @@
-import { currentUser } from "@clerk/nextjs/server";
 import { SignedIn, SignedOut, SignInButton } from "@clerk/nextjs";
-import { getTasks } from "@/lib/tasks";
 import { capitaliseString, userGreeting } from "@/utils/helpers";
 import Heading from "./components/Heading";
+import { Task } from "@prisma/client";
 
-const UserGreeting = async () => {
-  const user = await currentUser();
-  const { tasks = [] } = await getTasks();
+type Props = {
+  tasks: Task[];
+  user: any;
+};
 
+const UserGreeting = ({ tasks, user }: Props) => {
   const taskCount = tasks.filter((task) => !task.completed).length;
   const greeting = userGreeting();
-  const userName = capitaliseString(user?.firstName as string);
+  const userName = capitaliseString(user);
 
   return (
     <section>
