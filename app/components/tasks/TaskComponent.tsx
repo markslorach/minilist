@@ -3,7 +3,8 @@ import { Accordion } from "@/components/ui/accordion";
 import { Button } from "@/components/ui/button";
 import { clearCompletedTasks } from "@/app/actions/taskActions";
 import { Task } from "@prisma/client";
-import { useOptimistic } from "react";
+import { useOptimistic, useState } from "react";
+import { Check, LoaderCircle } from "lucide-react";
 
 // Components
 import Heading from "../Heading";
@@ -14,14 +15,17 @@ import TasksUserInfo from "../TasksUserInfo";
 import TasksCompletedUserInfo from "../TasksCompletedUserInfo";
 
 const TaskComponent = ({ tasks }: { tasks: Task[] }) => {
+  const [isClearing, setIsClearing] = useState(false);
   const [optimisticTasks, setOptimisticTasks] = useOptimistic<Task[]>(tasks);
 
   const addOptimisticTask = (newTask: Task) => {
-    setOptimisticTasks([newTask, ...optimisticTasks]); 
+    setOptimisticTasks([newTask, ...optimisticTasks]);
   };
-  
+
   const handleDeleteTask = (taskId: string) => {
-    setOptimisticTasks(tasks => tasks.filter(task => task.id !== parseInt(taskId)));
+    setOptimisticTasks((tasks) =>
+      tasks.filter((task) => task.id !== parseInt(taskId))
+    );
   };
 
   const tasksPending = optimisticTasks.filter((task) => !task.completed);
@@ -56,11 +60,21 @@ const TaskComponent = ({ tasks }: { tasks: Task[] }) => {
 
       {tasksComplete.length > 0 && (
         <Button
-          onClick={() => clearCompletedTasks()}
+          onClick={async () => {
+            setIsClearing(true);
+            await clearCompletedTasks();
+            setIsClearing(false);
+          }}
           variant="secondary"
           size="sm"
+          disabled={isClearing}
         >
           Clear completed tasks
+          {isClearing ? (
+            <LoaderCircle className="w-5 h-5 animate-spin ml-1.5" />
+          ) : (
+            <Check className="w-5 h-5 ml-1.5" />
+          )}
         </Button>
       )}
     </section>
