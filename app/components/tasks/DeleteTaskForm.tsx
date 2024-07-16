@@ -8,18 +8,20 @@ type Props = {
 };
 
 const DeleteTaskForm = ({ taskId }: Props) => {
-  
   async function action(formData: FormData) {
     const taskId = formData.get("taskId") as string;
     await deleteTaskAction(taskId);
   }
 
   return (
-    <form className="flex"
-      action={action}
-    >
+    <form className="flex" action={action}>
       <Input name="taskId" className="hidden" value={taskId} />
-      <FormActionButton icon={Trash} label="Delete Task" className="text-red-400" iconSize={25}/>
+      <FormActionButton
+        icon={Trash}
+        label="Delete Task"
+        className="text-red-400"
+        iconSize={25}
+      />
     </form>
   );
 };
