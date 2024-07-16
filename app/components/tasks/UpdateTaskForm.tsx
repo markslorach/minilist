@@ -30,9 +30,9 @@ const UpdateTaskForm = ({
       action={async (formData) => {
         const updatedTask = formData.get("task") as string;
         ref.current?.reset();
-        setIsUpdating(false);
         updateOptimisticTask({ ...task, title: updatedTask });
         await updateTask(formData);
+        setIsUpdating(false);
       }}
       className="flex justify-between items-center w-full"
     >
