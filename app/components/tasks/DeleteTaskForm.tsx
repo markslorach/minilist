@@ -5,11 +5,14 @@ import FormActionButton from "../FormActionButton";
 
 type Props = {
   taskId: number;
+  handleDelete: (taskId: string) => void;
 };
 
-const DeleteTaskForm = ({ taskId }: Props) => {
+const DeleteTaskForm = ({ taskId, handleDelete }: Props) => {
+
   async function action(formData: FormData) {
     const taskId = formData.get("taskId") as string;
+    handleDelete(taskId);
     await deleteTaskAction(taskId);
   }
 

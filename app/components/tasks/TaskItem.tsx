@@ -11,7 +11,12 @@ import DeleteTaskForm from "./DeleteTaskForm";
 import { useOptimistic, useState } from "react";
 import { Task } from "@prisma/client";
 
-const TaskItem = ({ task }: { task: Task }) => {
+type Props = {
+  task: Task;
+  handleDelete: (taskId: string) => void;
+};
+
+const TaskItem = ({ task, handleDelete }: Props ) => {
   const [isUpdating, setIsUpdating] = useState(false);
   const [optimisticTask, updateOptimisticTask] = useOptimistic(task)
 
@@ -35,7 +40,7 @@ const TaskItem = ({ task }: { task: Task }) => {
               className="text-gray-600 dark:text-gray-400 cursor-pointer"
               size={25}
             />
-            <DeleteTaskForm taskId={task.id} />
+            <DeleteTaskForm taskId={task.id} handleDelete={handleDelete}/>
           </div>
         ) : (
           <UpdateTaskForm task={optimisticTask} setIsUpdating={setIsUpdating} updateOptimisticTask={updateOptimisticTask}  />

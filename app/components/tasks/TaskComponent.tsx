@@ -14,15 +14,18 @@ import TasksUserInfo from "../TasksUserInfo";
 import TasksCompletedUserInfo from "../TasksCompletedUserInfo";
 
 const TaskComponent = ({ tasks }: { tasks: Task[] }) => {
-  const [optimisticTasks, addOptimisticTask] = useOptimistic(
-    tasks,
-    (state, newTask: Task) => {
-      return [newTask, ...state];
-    }
-  );
+  const [optimisticTasks, setOptimisticTasks] = useOptimistic<Task[]>(tasks);
+
+  const addOptimisticTask = (newTask: Task) => {
+    setOptimisticTasks([newTask, ...optimisticTasks]); 
+  };
+  
+  const handleDeleteTask = (taskId: string) => {
+    setOptimisticTasks(tasks => tasks.filter(task => task.id !== parseInt(taskId)));
+  };
 
   const tasksPending = optimisticTasks.filter((task) => !task.completed);
-  const tasksComplete = tasks.filter((task) => task.completed);
+  const tasksComplete = optimisticTasks.filter((task) => task.completed);
 
   return (
     <section>
@@ -33,7 +36,7 @@ const TaskComponent = ({ tasks }: { tasks: Task[] }) => {
 
       <Accordion type="single" collapsible className="w-full">
         {tasksPending.map((task) => (
-          <TaskItem key={task.id} task={task} />
+          <TaskItem key={task.id} task={task} handleDelete={handleDeleteTask} />
         ))}
       </Accordion>
 
