@@ -24,22 +24,24 @@ const UpdateTaskForm = ({
     }
   }, []);
 
+  async function action(formData: FormData) {
+    try {
+      const updatedTask = formData.get("task") as string;
+      ref.current?.reset();
+      updateOptimisticTask({ ...task, title: updatedTask });
+      await updateTaskAction(formData);
+    } catch (error) {
+      console.error("Error updating task:", error);
+      updateOptimisticTask(task);
+    } finally {
+      setIsUpdating(false);
+    }
+  }
+
   return (
     <form
       ref={ref}
-      action={async (formData) => {
-        try {
-          const updatedTask = formData.get("task") as string;
-          ref.current?.reset();
-          updateOptimisticTask({ ...task, title: updatedTask });
-          await updateTaskAction(formData);
-        } catch (error) {
-          console.error("Error updating task:", error);
-          updateOptimisticTask(task);
-        } finally {
-          setIsUpdating(false);
-        }
-      }}
+      action={action}
       className="flex justify-between items-center w-full"
     >
       <div className="w-full">

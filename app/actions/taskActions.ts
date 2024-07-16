@@ -29,7 +29,7 @@ export async function updateTaskAction(formData: FormData) {
   }
 }
 
-// Delete Task
+// Delete Task - update this
 export async function deleteTask(formData: FormData) {
   const taskId = formData.get("taskId") as string;
   await prisma.task.delete({
@@ -40,7 +40,7 @@ export async function deleteTask(formData: FormData) {
   revalidatePath("/");
 }
 
-// Complete Task
+// Complete Task - update this
 export async function completeTask(formData: FormData) {
   const taskId = formData.get("taskId") as string;
 
@@ -56,7 +56,7 @@ export async function completeTask(formData: FormData) {
   revalidatePath("/");
 }
 
-// Clear Completed Tasks
+// Clear Completed Tasks - update this
 export async function clearCompletedTasks() {
   const userEmail = await currentUser();
   await prisma.task.deleteMany({

@@ -15,27 +15,29 @@ const AddTaskForm = ({ addOptimisticTask }: any) => {
     }
   }, []);
 
+  async function action(formData: FormData) {
+    const task = formData.get("task") as string;
+
+    const newTask = {
+      id: Math.random(),
+      title: task,
+      completed: false,
+      userId: 0,
+      listId: null,
+      xata_updatedat: new Date(),
+      xata_id: "",
+      xata_version: 0,
+      xata_createdat: new Date(),
+      pending: true,
+    };
+
+    ref.current?.reset();
+    addOptimisticTask(newTask);
+    await createTaskAction(formData);
+  }
+
   return (
-    <form
-      ref={ref}
-      action={async (formData) => {
-        const task = formData.get("task") as string;
-        ref.current?.reset();
-        addOptimisticTask({
-          id: Math.random(),
-          title: task,
-          completed: false,
-          userId: 0,
-          listId: null,
-          xata_updatedat: new Date(),
-          xata_id: "",
-          xata_version: 0,
-          xata_createdat: new Date(),
-          pending: true,
-        });
-        await createTaskAction(formData);
-      }}
-    >
+    <form ref={ref} action={action}>
       <div className="flex space-x-4">
         <Input
           type="text"
