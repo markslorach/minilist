@@ -27,8 +27,7 @@ export async function updateTaskAction(taskId: string, newTask: string) {
 }
 
 // Delete Task
-export async function deleteTaskAction(formData: FormData) {
-  const taskId = formData.get("taskId") as string;
+export async function deleteTaskAction(taskId: string) {
   try {
     await deleteTask(taskId);
   } catch (error: any) {
