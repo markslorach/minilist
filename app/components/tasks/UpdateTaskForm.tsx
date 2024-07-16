@@ -29,7 +29,10 @@ const UpdateTaskForm = ({
     const newTask = formData.get("task") as string;
     try {
       ref.current?.reset();
-      updateOptimisticTask({ ...task, title: newTask });
+      updateOptimisticTask({ 
+      ...task as Task,
+      title: newTask,
+    });
       await updateTaskAction(taskId, newTask);
     } catch (error) {
       console.error("Error updating task:", error);
