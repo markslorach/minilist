@@ -9,9 +9,11 @@ import FormActionButton from "../FormActionButton";
 const UpdateTaskForm = ({
   task,
   setIsUpdating,
+  updateOptimisticTask,
 }: {
   task: Task;
   setIsUpdating: (value: boolean) => void;
+  updateOptimisticTask: (task: Task) => void;
 }) => {
   const ref = useRef<HTMLFormElement>(null);
   const inputRef = useRef<HTMLInputElement>(null);
@@ -26,8 +28,10 @@ const UpdateTaskForm = ({
     <form
       ref={ref}
       action={async (formData) => {
+        const updatedTask = formData.get("task") as string;
         ref.current?.reset();
         setIsUpdating(false);
+        updateOptimisticTask({ ...task, title: updatedTask });
         await updateTask(formData);
       }}
       className="flex justify-between items-center w-full"

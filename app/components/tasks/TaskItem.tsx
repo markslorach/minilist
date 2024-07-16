@@ -8,11 +8,12 @@ import CompleteTaskForm from "./CompleteTaskForm";
 import { Pencil } from "lucide-react";
 import UpdateTaskForm from "./UpdateTaskForm";
 import DeleteTaskForm from "./DeleteTaskForm";
-import { useState } from "react";
+import { useOptimistic, useState } from "react";
 import { Task } from "@prisma/client";
 
 const TaskItem = ({ task }: { task: Task }) => {
   const [isUpdating, setIsUpdating] = useState(false);
+  const [optimisticTask, updateOptimisticTask] = useOptimistic(task)
 
   return (
     <AccordionItem
@@ -23,7 +24,7 @@ const TaskItem = ({ task }: { task: Task }) => {
       <div className="flex items-center space-x-3">
         <CompleteTaskForm task={task} />
         <div className="w-full">
-          <AccordionTrigger>{task.title}</AccordionTrigger>
+          <AccordionTrigger>{optimisticTask.title}</AccordionTrigger>
         </div>
       </div>
       <AccordionContent className="h-16 flex items-center">
@@ -37,7 +38,7 @@ const TaskItem = ({ task }: { task: Task }) => {
             <DeleteTaskForm taskId={task.id} />
           </div>
         ) : (
-          <UpdateTaskForm task={task} setIsUpdating={setIsUpdating} />
+          <UpdateTaskForm task={optimisticTask} setIsUpdating={setIsUpdating} updateOptimisticTask={updateOptimisticTask}  />
         )}
       </AccordionContent>
     </AccordionItem>
