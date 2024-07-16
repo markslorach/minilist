@@ -10,7 +10,6 @@ export default async function Home() {
 
   if (user) {
     const email = user.emailAddresses[0].emailAddress;
-
     try {
       const existingUser = await prisma.user.findUnique({
         where: { email },

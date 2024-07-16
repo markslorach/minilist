@@ -34,6 +34,12 @@ const TaskComponent = ({ tasks, user }: Props) => {
     );
   };
 
+  const handleTaskComplete = (updatedTask: Task) => {
+    setOptimisticTasks((tasks) =>
+      tasks.map((task) => (task.id === updatedTask.id ? updatedTask : task))
+    );
+  };
+
   const tasksPending = optimisticTasks.filter((task) => !task.completed);
   const tasksComplete = optimisticTasks.filter((task) => task.completed);
 
@@ -47,7 +53,7 @@ const TaskComponent = ({ tasks, user }: Props) => {
 
       <Accordion type="single" collapsible className="w-full">
         {tasksPending.map((task) => (
-          <TaskItem key={task.id} task={task} handleDelete={handleDeleteTask} />
+          <TaskItem key={task.id} task={task} handleDelete={handleDeleteTask} onTaskComplete={handleTaskComplete} />
         ))}
       </Accordion>
 
@@ -58,7 +64,7 @@ const TaskComponent = ({ tasks, user }: Props) => {
         {tasksComplete
           .map((task) => (
             <div key={task.id} className="flex items-center space-x-3">
-              <CompleteTaskForm task={task} />
+              <CompleteTaskForm task={task} onTaskComplete={handleTaskComplete} />
               <p className="text-sm line-through">{task.title}</p>
             </div>
           ))
