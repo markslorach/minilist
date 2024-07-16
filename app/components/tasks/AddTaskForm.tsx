@@ -33,7 +33,7 @@ const AddTaskForm = ({ addOptimisticTask }: any) => {
 
     ref.current?.reset();
     addOptimisticTask(newTask);
-    await createTaskAction(formData);
+    await createTaskAction(task);
   }
 
   return (

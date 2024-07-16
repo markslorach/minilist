@@ -1,7 +1,7 @@
 import prisma from "@/prisma/client";
 import { currentUser } from "@clerk/nextjs/server";
 
-// Create a new task
+// CREATE
 export async function createTask(title: string) {
   const user = await currentUser();
 
@@ -24,7 +24,7 @@ export async function createTask(title: string) {
   }
 }
 
-// Get all tasks for the current user
+// READ
 export async function getTasks() {
   const user = await currentUser();
 
@@ -45,7 +45,7 @@ export async function getTasks() {
   }
 }
 
-// Update a task
+// UPDATE
 export async function updateTask(taskId: string, title: string) {
   try {
     const task = await prisma.task.update({
@@ -58,11 +58,11 @@ export async function updateTask(taskId: string, title: string) {
   }
 }
 
-// Delete a task
-export async function deleteTask(taskId: number) {
+// DELETE
+export async function deleteTask(taskId: string) {
   try {
     const task = await prisma.task.delete({
-      where: { id: taskId },
+      where: { id: parseInt(taskId) },
     });
     return { task };
   } catch (error) {

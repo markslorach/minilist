@@ -1,25 +1,22 @@
 "use server";
 import prisma from "@/prisma/client";
-import { createTask, updateTask } from "@/lib/tasks";
+import { createTask, deleteTask, updateTask } from "@/lib/tasks";
 import { currentUser } from "@clerk/nextjs/server";
 import { revalidatePath } from "next/cache";
 
 // Create Task
-export async function createTaskAction(formData: FormData) {
-  const task = formData.get("task") as string;
+export async function createTaskAction(title: string) {
   try {
-    await createTask(task);
+    await createTask(title);
   } catch (error: any) {
     return { error: "Failed to create task" };
   } finally {
     revalidatePath("/");
   }
-  }
+}
 
 // Update Task
-export async function updateTaskAction(formData: FormData) {
-  const taskId = formData.get("taskId") as string;
-  const newTask = formData.get("task") as string;
+export async function updateTaskAction(taskId: string, newTask: string) {
   try {
     await updateTask(taskId, newTask);
   } catch (error: any) {
@@ -29,15 +26,16 @@ export async function updateTaskAction(formData: FormData) {
   }
 }
 
-// Delete Task - update this
-export async function deleteTask(formData: FormData) {
+// Delete Task
+export async function deleteTaskAction(formData: FormData) {
   const taskId = formData.get("taskId") as string;
-  await prisma.task.delete({
-    where: {
-      id: parseInt(taskId),
-    },
-  });
-  revalidatePath("/");
+  try {
+    await deleteTask(taskId);
+  } catch (error: any) {
+    return { error: "Failed to delete task" };
+  } finally {
+    revalidatePath("/");
+  }
 }
 
 // Complete Task - update this

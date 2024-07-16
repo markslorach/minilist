@@ -1,5 +1,5 @@
 import { Input } from "@/components/ui/input";
-import { deleteTask } from "../../actions/taskActions";
+import { deleteTaskAction } from "../../actions/taskActions";
 import { Trash } from "lucide-react";
 import FormActionButton from "../FormActionButton";
 
@@ -8,10 +8,11 @@ type Props = {
 };
 
 const DeleteTaskForm = ({ taskId }: Props) => {
+  
   return (
     <form className="flex"
       action={async (formData: FormData) => {
-        await deleteTask(formData);
+        await deleteTaskAction(formData);
       }}
     >
       <Input name="taskId" className="hidden" value={taskId} />
