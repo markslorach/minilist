@@ -45,7 +45,10 @@ const UpdateTaskForm = ({
   return (
     <form
       ref={ref}
-      onSubmit={(e) => { e.preventDefault(); action(new FormData(e.currentTarget)); }} 
+      onSubmit={(e) => {
+        e.preventDefault();
+        action(new FormData(e.currentTarget));
+      }}
       className="flex justify-between items-center w-full"
     >
       <div className="w-full">
