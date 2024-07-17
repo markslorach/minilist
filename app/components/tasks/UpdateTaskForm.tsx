@@ -23,6 +23,7 @@ const UpdateTaskForm = ({
   useEffect(() => {
     if (inputRef.current) {
       inputRef.current.focus();
+      ref.current?.reset();
     }
   }, []);
 

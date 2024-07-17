@@ -17,6 +17,7 @@ const AddTaskForm = ({ addOptimisticTask }: Props) => {
   useEffect(() => {
     if (inputRef.current) {
       inputRef.current.focus();
+      ref.current?.reset();
     }
   }, []);
 
