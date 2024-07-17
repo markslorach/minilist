@@ -13,7 +13,7 @@ const CompleteTaskForm = ({
   async function action(formData: FormData) {
     const taskId = formData.get("taskId") as string;
     const updatedTask = { ...task, completed: !task.completed };
-    setTimeout(() => onTaskComplete(updatedTask), 400);
+    setTimeout(() => onTaskComplete(updatedTask), 300);
     await completeTaskAction(taskId);
   }
   return (

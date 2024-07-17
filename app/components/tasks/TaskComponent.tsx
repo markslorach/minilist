@@ -40,12 +40,15 @@ const TaskComponent = ({ tasks, user }: Props) => {
     );
   };
 
-  const tasksPending = optimisticTasks.filter((task) => !task.completed).sort((a, b) => a.xata_createdat > b.xata_createdat ? -1 : 1);
-  const tasksComplete = optimisticTasks.filter((task) => task.completed).sort((a, b) => a.xata_updatedat > b.xata_updatedat ? -1 : 1);
+  const tasksPending = optimisticTasks
+    .filter((task) => !task.completed)
+    .sort((a, b) => (a.xata_createdat > b.xata_createdat ? -1 : 1));
+
+  const tasksComplete = optimisticTasks.filter((task) => task.completed);
 
   return (
     <section>
-      <UserGreeting user={user} tasks={optimisticTasks}/>
+      <UserGreeting user={user} tasks={optimisticTasks} />
       <AddTaskForm addOptimisticTask={addOptimisticTask} />
 
       <Heading className="pt-10 pb-2">Tasks</Heading>
@@ -53,7 +56,12 @@ const TaskComponent = ({ tasks, user }: Props) => {
 
       <Accordion type="single" collapsible className="w-full">
         {tasksPending.map((task) => (
-          <TaskItem key={task.id} task={task} handleDelete={handleDeleteTask} onTaskComplete={handleTaskComplete} />
+          <TaskItem
+            key={task.id}
+            task={task}
+            handleDelete={handleDeleteTask}
+            onTaskComplete={handleTaskComplete}
+          />
         ))}
       </Accordion>
 
@@ -64,7 +72,10 @@ const TaskComponent = ({ tasks, user }: Props) => {
         {tasksComplete
           .map((task) => (
             <div key={task.id} className="flex items-center space-x-3">
-              <CompleteTaskForm task={task} onTaskComplete={handleTaskComplete} />
+              <CompleteTaskForm
+                task={task}
+                onTaskComplete={handleTaskComplete}
+              />
               <p className="text-sm line-through">{task.title}</p>
             </div>
           ))

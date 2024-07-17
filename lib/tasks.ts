@@ -37,8 +37,12 @@ export async function getTasks() {
           email: user?.emailAddresses[0].emailAddress,
         },
       },
-      orderBy: { xata_createdat: "desc" },
+      orderBy: [
+        { completed: "asc" },
+        { xata_updatedat: "desc" },
+      ],
     });
+
     return { tasks };
   } catch (error) {
     return { error: "Failed to fetch tasks" };
