@@ -34,7 +34,8 @@ const AccordionTrigger = React.forwardRef<
       {...props}
     >
       {children}
-      <div className="h-full">
+
+      <div className="min-h-full md:h-auto">
         <ChevronDown className="h-6 w-6 shrink-0 transition-transform duration-200" />
       </div>
     </AccordionPrimitive.Trigger>
