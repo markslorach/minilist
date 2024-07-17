@@ -6,15 +6,17 @@ import { X, Check } from "lucide-react";
 import { Task } from "@prisma/client";
 import FormActionButton from "../FormActionButton";
 
+type Props = {
+  task: Task;
+  setIsUpdating: (value: boolean) => void;
+  updateOptimisticTask: (task: Task) => void;
+};
+
 const UpdateTaskForm = ({
   task,
   setIsUpdating,
   updateOptimisticTask,
-}: {
-  task: Task;
-  setIsUpdating: (value: boolean) => void;
-  updateOptimisticTask: (task: Task) => void;
-}) => {
+}: Props) => {
   const ref = useRef<HTMLFormElement>(null);
   const inputRef = useRef<HTMLInputElement>(null);
 
@@ -27,24 +29,17 @@ const UpdateTaskForm = ({
   async function action(formData: FormData) {
     const taskId = formData.get("taskId") as string;
     const newTask = formData.get("task") as string;
-  
-    try {
-      ref.current?.reset();
-  
-      const updatedTask: Task = {
-        ...task,  
-        title: newTask,
-      };
 
-      updateOptimisticTask(updatedTask);    
+    ref.current?.reset();
 
-      await updateTaskAction(taskId, newTask);
-    } catch (error) {
-      console.error("Error updating task:", error);
-      updateOptimisticTask(task);
-    } finally {
-      setIsUpdating(false); 
-    }
+    const updatedTask: Task = {
+      ...task,
+      title: newTask,
+    };
+
+    updateOptimisticTask(updatedTask);
+    setIsUpdating(false);
+    await updateTaskAction(taskId, newTask);
   }
 
   return (

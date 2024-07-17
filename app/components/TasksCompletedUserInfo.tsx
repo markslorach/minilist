@@ -1,10 +1,10 @@
 import { Task } from "@prisma/client";
 
-const TasksCompletedUserInfo = ({
-  tasksComplete,
-}: {
+type Props = {
   tasksComplete: Task[];
-}) => {
+};
+
+const TasksCompletedUserInfo = ({ tasksComplete }: Props) => {
   const completedMessage = () => {
     switch (true) {
       case tasksComplete.length === 1:

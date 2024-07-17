@@ -15,7 +15,7 @@ const FormActionButton = ({
   label,
   disabled,
   iconSize,
-  className
+  className,
 }: ActionButtonProps) => {
   const { pending } = useFormStatus();
 

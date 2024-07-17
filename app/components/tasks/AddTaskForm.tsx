@@ -4,9 +4,13 @@ import { createTaskAction } from "../../actions/taskActions";
 import { useEffect, useRef } from "react";
 import { Plus } from "lucide-react";
 import { useFormStatus } from "react-dom";
-import FormActionButton from "../FormActionButton";
+import { Task } from "@prisma/client";
 
-const AddTaskForm = ({ addOptimisticTask }: any) => {
+type Props = {
+  addOptimisticTask: (task: Task) => void;
+};
+
+const AddTaskForm = ({ addOptimisticTask }: Props) => {
   const ref = useRef<HTMLFormElement>(null);
   const inputRef = useRef<HTMLInputElement>(null);
 
@@ -25,10 +29,10 @@ const AddTaskForm = ({ addOptimisticTask }: any) => {
       completed: false,
       userId: 0,
       listId: null,
-      xata_updatedat: new Date(),
       xata_id: "",
       xata_version: 0,
       xata_createdat: new Date(),
+      xata_updatedat: new Date(),
       pending: true,
     };
 

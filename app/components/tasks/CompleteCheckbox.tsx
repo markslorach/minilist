@@ -1,13 +1,19 @@
-"use client"
 import { Circle, CircleCheck } from "lucide-react";
 import { useFormStatus } from "react-dom";
 
-const CompleteTaskButton = ({ task }: { task: { completed: boolean } }) => {
+type Props = {
+  task: { completed: boolean };
+};
+
+const CompleteCheckbox = ({ task }: Props) => {
   const { pending } = useFormStatus();
+
   return (
     <button
       type="submit"
-      aria-label={task.completed ? "Mark task as incomplete" : "Mark task as complete"}
+      aria-label={
+        task.completed ? "Mark task as incomplete" : "Mark task as complete"
+      }
       disabled={pending}
       className="flex items-center"
     >
@@ -26,4 +32,4 @@ const CompleteTaskButton = ({ task }: { task: { completed: boolean } }) => {
   );
 };
 
-export default CompleteTaskButton;
+export default CompleteCheckbox;

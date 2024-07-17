@@ -37,10 +37,7 @@ export async function getTasks() {
           email: user?.emailAddresses[0].emailAddress,
         },
       },
-      orderBy: [
-        { completed: "asc" },
-        { xata_updatedat: "desc" },
-      ],
+      orderBy: [{ completed: "asc" }, { xata_updatedat: "desc" }],
     });
 
     return { tasks };

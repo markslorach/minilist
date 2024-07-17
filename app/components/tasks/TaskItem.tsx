@@ -1,4 +1,4 @@
-"use client"
+"use client";
 import {
   AccordionContent,
   AccordionItem,
@@ -17,9 +17,9 @@ type Props = {
   onTaskComplete: (updatedTask: Task) => void;
 };
 
-const TaskItem = ({ task, handleDelete, onTaskComplete }: Props ) => {
+const TaskItem = ({ task, handleDelete, onTaskComplete }: Props) => {
   const [isUpdating, setIsUpdating] = useState(false);
-  const [optimisticTask, updateOptimisticTask] = useOptimistic(task)
+  const [optimisticTask, updateOptimisticTask] = useOptimistic(task);
 
   return (
     <AccordionItem
@@ -28,7 +28,10 @@ const TaskItem = ({ task, handleDelete, onTaskComplete }: Props ) => {
       className="border-none py-0.5"
     >
       <div className="flex items-center space-x-3">
-        <CompleteTaskForm task={optimisticTask} onTaskComplete={onTaskComplete} />
+        <CompleteTaskForm
+          task={optimisticTask}
+          onTaskComplete={onTaskComplete}
+        />
         <div className="w-full">
           <AccordionTrigger>{optimisticTask.title}</AccordionTrigger>
         </div>
@@ -41,10 +44,14 @@ const TaskItem = ({ task, handleDelete, onTaskComplete }: Props ) => {
               className="text-gray-600 dark:text-gray-400 cursor-pointer"
               size={25}
             />
-            <DeleteTaskForm taskId={task.id} handleDelete={handleDelete}/>
+            <DeleteTaskForm taskId={task.id} handleDelete={handleDelete} />
           </div>
         ) : (
-          <UpdateTaskForm task={optimisticTask} setIsUpdating={setIsUpdating} updateOptimisticTask={updateOptimisticTask}  />
+          <UpdateTaskForm
+            task={optimisticTask}
+            setIsUpdating={setIsUpdating}
+            updateOptimisticTask={updateOptimisticTask}
+          />
         )}
       </AccordionContent>
     </AccordionItem>

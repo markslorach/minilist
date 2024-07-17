@@ -5,8 +5,6 @@ import { clearCompletedTasks } from "@/app/actions/taskActions";
 import { Task } from "@prisma/client";
 import { useOptimistic, useState } from "react";
 import { Check, LoaderCircle } from "lucide-react";
-
-// Components
 import Heading from "../Heading";
 import TaskItem from "./TaskItem";
 import CompleteTaskForm from "./CompleteTaskForm";
@@ -14,6 +12,7 @@ import AddTaskForm from "./AddTaskForm";
 import TasksUserInfo from "../TasksUserInfo";
 import TasksCompletedUserInfo from "../TasksCompletedUserInfo";
 import UserGreeting from "@/app/UserGreeting";
+import CompleteTasksItem from "./CompleteTasksItem";
 
 type Props = {
   tasks: Task[];
@@ -71,13 +70,11 @@ const TaskComponent = ({ tasks, user }: Props) => {
       <div className="space-y-3.5 mb-10">
         {tasksComplete
           .map((task) => (
-            <div key={task.id} className="flex items-center space-x-3">
-              <CompleteTaskForm
-                task={task}
-                onTaskComplete={handleTaskComplete}
-              />
-              <p className="text-sm line-through">{task.title}</p>
-            </div>
+            <CompleteTasksItem
+              key={task.id}
+              task={task}
+              handleTaskComplete={handleTaskComplete}
+            />
           ))
           .slice(0, 5)}
       </div>
