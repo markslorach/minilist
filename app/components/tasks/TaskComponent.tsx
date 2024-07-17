@@ -41,7 +41,7 @@ const TaskComponent = ({ tasks, user }: Props) => {
   };
 
   const tasksPending = optimisticTasks.filter((task) => !task.completed);
-  const tasksComplete = optimisticTasks.filter((task) => task.completed);
+  const tasksComplete = optimisticTasks.filter((task) => task.completed)
 
   return (
     <section>

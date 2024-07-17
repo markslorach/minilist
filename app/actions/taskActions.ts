@@ -37,20 +37,22 @@ export async function deleteTaskAction(taskId: string) {
   }
 }
 
-// Complete Task - update this
-export async function completeTask(formData: FormData) {
-  const taskId = formData.get("taskId") as string;
+// Complete Task
+export async function completeTaskAction(taskId: string) {
+  try {
+    const task = await prisma.task.findUnique({
+      where: { id: parseInt(taskId) },
+    });
 
-  const task = await prisma.task.findUnique({
-    where: { id: parseInt(taskId) },
-  });
-
-  await prisma.task.update({
-    where: { id: parseInt(taskId) },
-    data: { completed: !task?.completed },
-  });
-
-  revalidatePath("/");
+    await prisma.task.update({
+      where: { id: parseInt(taskId) },
+      data: { completed: !task?.completed },
+    });
+  } catch (error: any) {
+    return { error: "Failed to complete task" };
+  } finally {
+    revalidatePath("/");
+  }
 }
 
 // Clear Completed Tasks

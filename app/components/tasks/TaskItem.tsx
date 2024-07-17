@@ -19,7 +19,7 @@ type Props = {
 
 const TaskItem = ({ task, handleDelete, onTaskComplete }: Props ) => {
   const [isUpdating, setIsUpdating] = useState(false);
-  const [optimisticTask, updateLocalOptimisticTask] = useOptimistic(task)
+  const [optimisticTask, updateOptimisticTask] = useOptimistic(task)
 
   return (
     <AccordionItem
@@ -44,7 +44,7 @@ const TaskItem = ({ task, handleDelete, onTaskComplete }: Props ) => {
             <DeleteTaskForm taskId={task.id} handleDelete={handleDelete}/>
           </div>
         ) : (
-          <UpdateTaskForm task={optimisticTask} setIsUpdating={setIsUpdating} updateOptimisticTask={updateLocalOptimisticTask}  />
+          <UpdateTaskForm task={optimisticTask} setIsUpdating={setIsUpdating} updateOptimisticTask={updateOptimisticTask}  />
         )}
       </AccordionContent>
     </AccordionItem>
