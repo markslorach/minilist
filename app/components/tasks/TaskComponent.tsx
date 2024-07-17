@@ -7,7 +7,6 @@ import { useOptimistic, useState } from "react";
 import { Check, LoaderCircle } from "lucide-react";
 import Heading from "../Heading";
 import TaskItem from "./TaskItem";
-import CompleteTaskForm from "./CompleteTaskForm";
 import AddTaskForm from "./AddTaskForm";
 import TasksUserInfo from "../TasksUserInfo";
 import TasksCompletedUserInfo from "../TasksCompletedUserInfo";
