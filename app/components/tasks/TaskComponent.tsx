@@ -40,8 +40,8 @@ const TaskComponent = ({ tasks, user }: Props) => {
     );
   };
 
-  const tasksPending = optimisticTasks.filter((task) => !task.completed);
-  const tasksComplete = optimisticTasks.filter((task) => task.completed)
+  const tasksPending = optimisticTasks.filter((task) => !task.completed).sort((a, b) => a.xata_createdat > b.xata_createdat ? -1 : 1);
+  const tasksComplete = optimisticTasks.filter((task) => task.completed).sort((a, b) => a.xata_updatedat > b.xata_updatedat ? -1 : 1);
 
   return (
     <section>
