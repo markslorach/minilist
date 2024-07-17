@@ -5,13 +5,13 @@ import { clearCompletedTasks } from "@/app/actions/taskActions";
 import { Task } from "@prisma/client";
 import { useOptimistic, useState } from "react";
 import { Check, LoaderCircle } from "lucide-react";
-import Heading from "../Heading";
+import Heading from "../shared/Heading";
 import TaskItem from "./TaskItem";
 import AddTaskForm from "./AddTaskForm";
-import TasksUserInfo from "../TasksUserInfo";
-import TasksCompletedUserInfo from "../TasksCompletedUserInfo";
-import UserGreeting from "@/app/UserGreeting";
+import TasksUserInfo from "./TasksUserInfo";
+import TasksCompletedUserInfo from "./TasksCompletedUserInfo";
 import CompleteTasksItem from "./CompleteTasksItem";
+import UserGreeting from "../shared/UserGreeting";
 
 type Props = {
   tasks: Task[];

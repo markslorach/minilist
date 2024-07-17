@@ -1,7 +1,7 @@
 import { Input } from "@/components/ui/input";
 import { deleteTaskAction } from "../../actions/taskActions";
 import { Trash } from "lucide-react";
-import FormActionButton from "../FormActionButton";
+import FormActionButton from "./FormActionButton";
 
 type Props = {
   taskId: number;

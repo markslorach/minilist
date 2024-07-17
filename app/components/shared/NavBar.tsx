@@ -6,8 +6,6 @@ import {
 } from "@clerk/nextjs";
 import Link from "next/link";
 import { Check } from 'lucide-react';
-
-// Components
 import ThemeSwitch from "./ThemeSwitch";
 
 const NavBar = () => {

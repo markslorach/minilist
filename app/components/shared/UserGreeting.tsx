@@ -1,7 +1,8 @@
 import { SignedIn, SignedOut, SignInButton } from "@clerk/nextjs";
 import { capitaliseString, userGreeting } from "@/utils/helpers";
-import Heading from "./components/Heading";
 import { Task } from "@prisma/client";
+import Heading from "./Heading";
+
 
 type Props = {
   tasks: Task[];

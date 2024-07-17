@@ -4,7 +4,7 @@ import { useEffect, useRef } from "react";
 import { updateTaskAction } from "@/app/actions/taskActions";
 import { X, Check } from "lucide-react";
 import { Task } from "@prisma/client";
-import FormActionButton from "../FormActionButton";
+import FormActionButton from "./FormActionButton";
 
 type Props = {
   task: Task;

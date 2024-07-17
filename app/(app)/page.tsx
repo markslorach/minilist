@@ -3,7 +3,7 @@ import { SignedIn, SignedOut, SignInButton } from "@clerk/nextjs";
 import { currentUser } from "@clerk/nextjs/server";
 import TaskComponent from "../components/tasks/TaskComponent";
 import { getTasks } from "@/lib/tasks";
-import Heading from "../components/Heading";
+import Heading from "../components/shared/Heading";
 
 export default async function Home() {
   const user = await currentUser();

@@ -1,8 +1,8 @@
 "use client";
 import { ReactNode } from "react";
 import { motion } from "framer-motion";
-import NavBar from "../NavBar";
-import Footer from "../Footer";
+import Footer from "../components/shared/Footer";
+import NavBar from "../components/shared/NavBar";
 
 const AppLayout = ({ children }: { children: ReactNode }) => {
   return (
