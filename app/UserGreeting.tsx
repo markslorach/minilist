@@ -15,16 +15,6 @@ const UserGreeting = ({ tasks, user }: Props) => {
 
   return (
     <section>
-      <SignedOut>
-        <Heading>
-          Welcome! Please{" "}
-          <span className="text-blue-500">
-            <SignInButton>sign in</SignInButton>
-          </span>{" "}
-          to see your tasks for today.
-        </Heading>
-      </SignedOut>
-
       <SignedIn>
         <Heading className="pb-10">
           {greeting}, {userName}. You have{" "}
