@@ -3,7 +3,7 @@ import { Github } from "lucide-react";
 
 const Footer = () => {
   return (
-    <footer className="h-20 items-center flex justify-between">
+    <footer className="flex h-20 items-center justify-between">
       <p>
         created by{" "}
         <Link
@@ -16,7 +16,7 @@ const Footer = () => {
         .
       </p>
       <Link href="https://github.com/markslorach/minilist.git" target="_blank">
-        <Github className="w-5 h-5" />
+        <Github className="h-5 w-5" />
       </Link>
     </footer>
   );

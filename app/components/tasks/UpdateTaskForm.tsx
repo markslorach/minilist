@@ -50,7 +50,7 @@ const UpdateTaskForm = ({
         e.preventDefault();
         action(new FormData(e.currentTarget));
       }}
-      className="flex justify-between items-center w-full"
+      className="flex w-full items-center justify-between"
     >
       <div className="w-full">
         <Input name="taskId" className="hidden" value={task.id} />
@@ -59,7 +59,7 @@ const UpdateTaskForm = ({
           name="task"
           placeholder={task.title}
           required
-          className="border-none bg-transparent dark:bg-transparent p-0 pr-2"
+          className="border-none bg-transparent p-0 pr-2 dark:bg-transparent"
           ref={inputRef}
         />
       </div>

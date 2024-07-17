@@ -3,7 +3,7 @@ import { useState, useEffect } from "react";
 import { useTheme } from "next-themes";
 
 // Icons
-import { SunIcon, MoonIcon } from "lucide-react"
+import { SunIcon, MoonIcon } from "lucide-react";
 
 const ThemeSwitch = () => {
   const { theme, setTheme } = useTheme();
@@ -19,11 +19,7 @@ const ThemeSwitch = () => {
 
   return (
     <>
-      <button
-        aria-label="Toggle Theme"
-        type="button"
-        onClick={toggleTheme}
-      >
+      <button aria-label="Toggle Theme" type="button" onClick={toggleTheme}>
         {theme === "dark" ? (
           <SunIcon className="h-6 w-6" />
         ) : (

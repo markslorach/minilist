@@ -28,13 +28,13 @@ const TaskComponent = ({ tasks, user }: Props) => {
 
   const handleDeleteTask = (taskId: string) => {
     setOptimisticTasks((tasks) =>
-      tasks.filter((task) => task.id !== parseInt(taskId))
+      tasks.filter((task) => task.id !== parseInt(taskId)),
     );
   };
 
   const handleTaskComplete = (updatedTask: Task) => {
     setOptimisticTasks((tasks) =>
-      tasks.map((task) => (task.id === updatedTask.id ? updatedTask : task))
+      tasks.map((task) => (task.id === updatedTask.id ? updatedTask : task)),
     );
   };
 
@@ -49,7 +49,7 @@ const TaskComponent = ({ tasks, user }: Props) => {
       <UserGreeting user={user} tasks={optimisticTasks} />
       <AddTaskForm addOptimisticTask={addOptimisticTask} />
 
-      <Heading className="pt-10 pb-2">Tasks</Heading>
+      <Heading className="pb-2 pt-10">Tasks</Heading>
       <TasksUserInfo tasksPending={tasksPending} />
 
       <Accordion type="single" collapsible className="w-full">
@@ -63,10 +63,10 @@ const TaskComponent = ({ tasks, user }: Props) => {
         ))}
       </Accordion>
 
-      <Heading className="pt-10 pb-2">Completed</Heading>
+      <Heading className="pb-2 pt-10">Completed</Heading>
       <TasksCompletedUserInfo tasksComplete={tasksComplete} />
 
-      <div className="space-y-3.5 mb-10">
+      <div className="mb-10 space-y-3.5">
         {tasksComplete
           .map((task) => (
             <CompleteTasksItem
@@ -91,9 +91,9 @@ const TaskComponent = ({ tasks, user }: Props) => {
         >
           Clear completed tasks
           {isClearing ? (
-            <LoaderCircle className="w-5 h-5 animate-spin ml-1.5" />
+            <LoaderCircle className="ml-1.5 h-5 w-5 animate-spin" />
           ) : (
-            <Check className="w-5 h-5 ml-1.5" />
+            <Check className="ml-1.5 h-5 w-5" />
           )}
         </Button>
       )}

@@ -36,12 +36,12 @@ const TaskItem = ({ task, handleDelete, onTaskComplete }: Props) => {
           <AccordionTrigger>{optimisticTask.title}</AccordionTrigger>
         </div>
       </div>
-      <AccordionContent className="h-16 flex items-center">
+      <AccordionContent className="flex h-16 items-center">
         {!isUpdating ? (
-          <div className="flex space-x-4 items-center">
+          <div className="flex items-center space-x-4">
             <Pencil
               onClick={() => setIsUpdating(true)}
-              className="text-gray-600 dark:text-gray-400 cursor-pointer"
+              className="cursor-pointer text-gray-600 dark:text-gray-400"
               size={25}
             />
             <DeleteTaskForm taskId={task.id} handleDelete={handleDelete} />

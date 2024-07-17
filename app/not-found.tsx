@@ -5,7 +5,7 @@ import NavBar from "./components/shared/NavBar";
 
 const NotFound = () => {
   return (
-    <main className="flex flex-col min-h-dvh md:min-h-screen mx-auto max-w-3xl px-4 sm:px-10">
+    <main className="mx-auto flex min-h-dvh max-w-3xl flex-col px-4 sm:px-10 md:min-h-screen">
       <NavBar />
       <section className="flex-grow py-16">
         <Heading className="pb-10">

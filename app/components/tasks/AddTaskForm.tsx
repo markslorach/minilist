@@ -43,19 +43,17 @@ const AddTaskForm = ({ addOptimisticTask }: Props) => {
   }
 
   return (
-    <form ref={ref} action={action}>
-      <div className="flex space-x-4">
-        <Input
-          type="text"
-          name="task"
-          placeholder="What do you want to get done today?"
-          required
-          className="border-none bg-transparent dark:bg-transparent px-0"
-          ref={inputRef}
-        />
-        {/* <FormActionButton icon={Plus} label="Add Task" iconSize={28} /> */}
-        <SubmitButton />
-      </div>
+    <form ref={ref} action={action} className="flex space-x-4">
+      <Input
+        type="text"
+        name="task"
+        placeholder="What do you want to get done today?"
+        required
+        className="border-none bg-transparent px-0 dark:bg-transparent"
+        ref={inputRef}
+      />
+      {/* <FormActionButton icon={Plus} label="Add Task" iconSize={28} /> */}
+      <SubmitButton />
     </form>
   );
 };
@@ -65,7 +63,7 @@ function SubmitButton() {
 
   return (
     <button type="submit" aria-label="Add Task" disabled={pending}>
-      <Plus className={`w-7 h-7 ${pending ? "opacity-50" : ""}`} size={28} />
+      <Plus className={`h-7 w-7 ${pending ? "opacity-50" : ""}`} size={28} />
     </button>
   );
 }

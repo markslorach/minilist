@@ -3,7 +3,6 @@ import { capitaliseString, userGreeting } from "@/utils/helpers";
 import { Task } from "@prisma/client";
 import Heading from "./Heading";
 
-
 type Props = {
   tasks: Task[];
   user: any;
