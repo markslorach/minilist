@@ -12,7 +12,8 @@ const DeleteTaskForm = ({ taskId, handleDelete }: Props) => {
 
   async function action(formData: FormData) {
     const taskId = formData.get("taskId") as string;
-    handleDelete(taskId);
+    setTimeout(() => handleDelete(taskId), 200);
+    
     await deleteTaskAction(taskId);
   }
 

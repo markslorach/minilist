@@ -48,21 +48,21 @@ const AddTaskForm = ({ addOptimisticTask }: any) => {
           className="border-none bg-transparent dark:bg-transparent px-0"
           ref={inputRef}
         />
-        <FormActionButton icon={Plus} label="Add Task" iconSize={28} />
-        {/* <SubmitButton /> */}
+        {/* <FormActionButton icon={Plus} label="Add Task" iconSize={28} /> */}
+        <SubmitButton />
       </div>
     </form>
   );
 };
 
-// function SubmitButton() {
-//   const { pending } = useFormStatus();
+function SubmitButton() {
+  const { pending } = useFormStatus();
 
-//   return (
-//     <button type="submit" aria-label="Add Task" disabled={pending}>
-//       <Plus className={`w-7 h-7 ${pending ? "opacity-70" : ""}`} size={28} />
-//     </button>
-//   );
-// }
+  return (
+    <button type="submit" aria-label="Add Task" disabled={pending}>
+      <Plus className={`w-7 h-7 ${pending ? "opacity-50" : ""}`} size={28} />
+    </button>
+  );
+}
 
 export default AddTaskForm;
