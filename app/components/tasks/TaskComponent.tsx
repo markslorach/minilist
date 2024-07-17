@@ -10,8 +10,8 @@ import TaskItem from "./TaskItem";
 import AddTaskForm from "./AddTaskForm";
 import TasksUserInfo from "./TasksUserInfo";
 import TasksCompletedUserInfo from "./TasksCompletedUserInfo";
-import CompleteTasksItem from "./CompleteTasksItem";
 import UserGreeting from "../shared/UserGreeting";
+import TaskCompletedItem from "./TaskCompletedItem";
 
 type Props = {
   tasks: Task[];
@@ -69,7 +69,7 @@ const TaskComponent = ({ tasks, user }: Props) => {
       <div className="mb-10 space-y-3.5">
         {tasksComplete
           .map((task) => (
-            <CompleteTasksItem
+            <TaskCompletedItem
               key={task.id}
               task={task}
               handleTaskComplete={handleTaskComplete}

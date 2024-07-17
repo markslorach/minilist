@@ -27,6 +27,20 @@ const UpdateTaskForm = ({
     }
   }, []);
 
+  useEffect(() => {
+    function handleKeyDown(e: KeyboardEvent) {
+      if (e.key === "Escape") {
+        setIsUpdating(false);
+      }
+    }
+
+    document.addEventListener("keydown", handleKeyDown);
+
+    return () => {
+      document.removeEventListener("keydown", handleKeyDown);
+    };
+  }, [setIsUpdating]); 
+
   async function action(formData: FormData) {
     const taskId = formData.get("taskId") as string;
     const newTask = formData.get("task") as string;

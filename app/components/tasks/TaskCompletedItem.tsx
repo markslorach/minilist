@@ -6,7 +6,7 @@ type Props = {
   handleTaskComplete: (task: Task) => void;
 };
 
-const CompleteTasksItem = ({ task, handleTaskComplete }: Props) => {
+const TaskCompletedItem = ({ task, handleTaskComplete }: Props) => {
   return (
     <div className="flex items-center space-x-3">
       <CompleteTaskForm task={task} onTaskComplete={handleTaskComplete} />
@@ -15,4 +15,4 @@ const CompleteTasksItem = ({ task, handleTaskComplete }: Props) => {
   );
 };
 
-export default CompleteTasksItem;
+export default TaskCompletedItem;
