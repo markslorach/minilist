@@ -30,6 +30,7 @@ const UpdateTaskForm = ({
     const taskId = formData.get("taskId") as string;
     const newTask = formData.get("task") as string;
 
+    setIsUpdating(false);
     ref.current?.reset();
 
     const updatedTask: Task = {
@@ -38,14 +39,13 @@ const UpdateTaskForm = ({
     };
 
     updateOptimisticTask(updatedTask);
-    setIsUpdating(false);
     await updateTaskAction(taskId, newTask);
   }
 
   return (
     <form
       ref={ref}
-      action={action}
+      onSubmit={(e) => { e.preventDefault(); action(new FormData(e.currentTarget)); }} 
       className="flex justify-between items-center w-full"
     >
       <div className="w-full">
