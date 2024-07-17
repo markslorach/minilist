@@ -5,6 +5,7 @@ import { useEffect, useRef } from "react";
 import { Plus } from "lucide-react";
 import { useFormStatus } from "react-dom";
 import { Task } from "@prisma/client";
+import { toast } from "sonner";
 
 type Props = {
   addOptimisticTask: (task: Task) => void;
@@ -39,7 +40,11 @@ const AddTaskForm = ({ addOptimisticTask }: Props) => {
 
     ref.current?.reset();
     addOptimisticTask(newTask);
-    await createTaskAction(task);
+    const result = await createTaskAction(task);
+
+    if (result?.error) {
+      toast.error(result.error)
+    }
   }
 
   return (

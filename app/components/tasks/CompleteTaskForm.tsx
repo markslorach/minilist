@@ -2,6 +2,7 @@ import { Input } from "@/components/ui/input";
 import { completeTaskAction } from "../../actions/taskActions";
 import { Task } from "@prisma/client";
 import CompleteCheckbox from "./CompleteCheckbox";
+import { toast } from "sonner";
 
 type Props = {
   task: Task;
@@ -11,9 +12,15 @@ type Props = {
 const CompleteTaskForm = ({ task, onTaskComplete }: Props) => {
   async function action(formData: FormData) {
     const taskId = formData.get("taskId") as string;
+
     const updatedTask = { ...task, completed: !task.completed };
+
     setTimeout(() => onTaskComplete(updatedTask), 200);
-    await completeTaskAction(taskId);
+    const result = await completeTaskAction(taskId);
+
+    if (result?.error) {
+      toast.error(result.error)
+    }
   }
 
   return (

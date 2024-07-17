@@ -1,8 +1,9 @@
 import type { Metadata } from "next";
-import { Inter, Manrope } from "next/font/google";
+import { Inter } from "next/font/google";
 import "./globals.css";
 import { ClerkProvider } from "@clerk/nextjs";
 import { ThemeProvider } from "next-themes";
+import { Toaster } from "sonner";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -27,6 +28,7 @@ export default function RootLayout({
           >
             <main>{children}</main>
           </ThemeProvider>
+          <Toaster position="top-right" theme="light" richColors closeButton />
         </body>
       </html>
     </ClerkProvider>

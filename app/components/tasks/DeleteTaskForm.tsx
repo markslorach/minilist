@@ -2,6 +2,7 @@ import { Input } from "@/components/ui/input";
 import { deleteTaskAction } from "../../actions/taskActions";
 import { Trash } from "lucide-react";
 import FormActionButton from "./FormActionButton";
+import { toast } from "sonner";
 
 type Props = {
   taskId: number;
@@ -14,7 +15,11 @@ const DeleteTaskForm = ({ taskId, handleDelete }: Props) => {
 
     setTimeout(() => handleDelete(taskId), 200);
 
-    await deleteTaskAction(taskId);
+    const result = await deleteTaskAction(taskId);
+
+    if (result?.error) {
+      toast.error(result.error)
+    }
   }
 
   return (
