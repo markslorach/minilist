@@ -12,12 +12,11 @@ Minimilistic distraction free task manager.
 - Clerk Auth
 
 ### Working on
-- Optimistic UI to  eliminate server loading times
 - Better accordion solution for mobile
 - Code clean-up and error handling
 
 ### Future updates
-- Projects for tasks
+- Spaces for task lists
 - Pomodoro timer
 
 ### Screenshots
