@@ -12,8 +12,7 @@ Minimilistic distraction free task manager.
 - Clerk Auth
 
 ### Working on
-- Better accordion solution for mobile
-- Code clean-up and error handling
+- Task priority
 
 ### Future updates
 - Spaces for task lists
