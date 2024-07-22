@@ -1,22 +1,27 @@
-# minilist
+# Minilist
+[minilist](https://minilist.vercel.app/) is a minimalistic and distraction-free task manager designed to help users efficiently manage their tasks. It supports full CRUD operations for tasks, task completion, and clearing completed tasks.
 
-Minimilistic distraction free task manager.
+## Tech Stack
+- **Frontend:** Next,js, TypeScript, Tailwind, Shadcn/ui
+- **Backend:** Prisma ORM, Xata PortgreSQL
+- **Authentication**: Clerk Auth
 
-### Tech stack
-- Next.js
-- TypeScript
-- Tailwind
-- Shadcn/ui
-- Prisma
-- Xata PostgreSQL
-- Clerk Auth
+## Features
+* Add, update, and delete tasks
+* Mark tasks as complete
+* Clear completed tasks
 
-### Working on
-- Task priority
+## Roadmap
+- [x] User login with Clerk Auth
+- [x] CRUD operations for tasks
+- [ ] Task priority management
+- [ ] Spaces for task lists
+- [ ] Pomodoro timer integration
 
-### Future updates
-- Spaces for task lists
-- Pomodoro timer
+## Contact
+Mark Slorach - hello@markslorach.com
+Deployed Link - https://minilist.vercel.app/
+Project Link - https://github.com/markslorach/minilist.git
 
 ### Screenshots
 
