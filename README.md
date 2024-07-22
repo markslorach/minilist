@@ -10,6 +10,7 @@
 * Add, update, and delete tasks
 * Mark tasks as complete and incomplete
 * Clear completed tasks
+* Optimistic UI for instant user feedback
 
 ## Roadmap
 - [x] User login with Clerk Auth
