@@ -8,7 +8,7 @@
 
 ## Features
 * Add, update, and delete tasks
-* Mark tasks as complete
+* Mark tasks as complete and incomplete
 * Clear completed tasks
 
 ## Roadmap
@@ -18,12 +18,12 @@
 - [ ] Spaces for task lists
 - [ ] Pomodoro timer integration
 
-## Contact
-Mark Slorach - hello@markslorach.com
-
 ## Links
 Deployed Link - https://minilist.vercel.app/ \
 Project Link - https://github.com/markslorach/minilist.git
+
+## Contact
+Mark Slorach - hello@markslorach.com
 
 ## Screenshots
 
