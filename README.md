@@ -19,9 +19,9 @@
 - [ ] Pomodoro timer integration
 
 ## Contact
-Mark Slorach - hello@markslorach.com
-Deployed Link - https://minilist.vercel.app/
-Project Link - https://github.com/markslorach/minilist.git
+Mark Slorach - hello@markslorach.com\
+Deployed Link - https://minilist.vercel.app/\
+Project Link - https://github.com/markslorach/minilist.git\
 
 ### Screenshots
 
