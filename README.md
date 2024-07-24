@@ -1,5 +1,5 @@
 # minilist
-[minilist](https://minilist.vercel.app/) is a minimalistic and distraction-free task manager designed to help users efficiently manage their tasks. It supports full CRUD operations for tasks, task completion and clearing completed tasks.
+[minilist](https://minilist.vercel.app/) is a minimalistic and distraction-free task manager designed to help users focus on their tasks. It supports full CRUD operations for tasks, task completion and clearing completed tasks.
 
 ## Tech Stack
 - **Frontend:** Next.js, TypeScript, Tailwind, Shadcn/ui
