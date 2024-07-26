@@ -3,7 +3,7 @@
 
 ## Tech Stack
 - **Frontend:** Next.js, TypeScript, Tailwind, Shadcn/ui
-- **Backend:** Prisma ORM, Xata PortgreSQL
+- **Backend:** Prisma ORM, Xata PostgreSQL
 - **Authentication**: Clerk Auth
 
 ## Features
