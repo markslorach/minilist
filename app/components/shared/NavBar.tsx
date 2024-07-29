@@ -11,7 +11,7 @@ import ThemeSwitch from "./ThemeSwitch";
 const NavBar = () => {
   return (
     <nav className="flex h-20 items-center justify-between">
-      <Link href="/" className="flex items-center">
+      <Link href="/" className="flex items-center font-medium">
         <Check className="mr-0.5 text-blue-500" />
         minilist.io
       </Link>

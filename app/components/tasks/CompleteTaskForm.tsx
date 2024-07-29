@@ -19,7 +19,7 @@ const CompleteTaskForm = ({ task, onTaskComplete }: Props) => {
     const result = await completeTaskAction(taskId);
 
     if (result?.error) {
-      toast.error(result.error)
+      toast.error(result.error);
     }
   }
 

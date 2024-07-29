@@ -1,11 +1,11 @@
 import prisma from "@/prisma/client";
-import { currentUser } from "@clerk/nextjs/server";
+import { getUser } from "./user";
 
 // CREATE
 export async function createTask(title: string) {
-  const user = await currentUser();
-
   try {
+    const user = await getUser();
+
     if (!user) return { error: "User not found" };
 
     const task = await prisma.task.create({
@@ -13,7 +13,7 @@ export async function createTask(title: string) {
         title: title,
         user: {
           connect: {
-            email: user?.emailAddresses[0].emailAddress,
+            email: user?.email,
           },
         },
       },
@@ -26,15 +26,15 @@ export async function createTask(title: string) {
 
 // READ
 export async function getTasks() {
-  const user = await currentUser();
-
   try {
+    const user = await getUser();
+
     if (!user) return { error: "User not found" };
 
     const tasks = await prisma.task.findMany({
       where: {
         user: {
-          email: user?.emailAddresses[0].emailAddress,
+          email: user?.email,
         },
       },
       orderBy: [{ completed: "asc" }, { xata_updatedat: "desc" }],

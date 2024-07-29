@@ -1,4 +1,4 @@
-import { SignedIn, SignedOut, SignInButton } from "@clerk/nextjs";
+import { SignedIn } from "@clerk/nextjs";
 import { capitaliseString, userGreeting } from "@/utils/helpers";
 import { Task } from "@prisma/client";
 import Heading from "./Heading";
