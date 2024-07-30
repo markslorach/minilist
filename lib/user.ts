@@ -5,19 +5,17 @@ import { currentUser } from "@clerk/nextjs/server";
 export async function getUser() {
   try {
     const clerkUser = await currentUser();
-    const clerkUserEmail = clerkUser?.emailAddresses[0]?.emailAddress;
+    const email = clerkUser?.emailAddresses[0]?.emailAddress as string;
 
-    if (!clerkUser || !clerkUserEmail) {
-      return;
-    }
+    if (!clerkUser) return;
 
     let user = await prisma.user.findUnique({
-      where: { email: clerkUserEmail },
+      where: { email },
     });
 
     if (!user) {
       user = await prisma.user.create({
-        data: { email: clerkUserEmail },
+        data: { email },
       });
     }
 

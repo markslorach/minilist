@@ -65,7 +65,7 @@ export async function deleteTask(taskId: string) {
     const task = await prisma.task.delete({
       where: { id: parseInt(taskId) },
     });
-    return { task };
+    return { task }
   } catch (error) {
     return { error: "Failed to delete task" };
   }
