@@ -27,5 +27,5 @@ Project Link - https://github.com/markslorach/minilist.git
 Mark Slorach - hello@markslorach.com
 
 ## Screenshots
-
-<img width="1521" alt="minilist-dark" src="https://github.com/markslorach/minilist/assets/15185553/e6dd1882-3447-44e0-aab3-a8dfdec04d71">
+![SCR-20240809-mawf](https://github.com/user-attachments/assets/aeb7f2ad-5f1b-4b42-88eb-571732d56c0f)
+![SCR-20240809-maxn](https://github.com/user-attachments/assets/d1d299ba-29dc-4345-a6a9-13fc63a67bcd)
