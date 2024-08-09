@@ -2,7 +2,7 @@
 import { Accordion } from "@/components/ui/accordion";
 import { Button } from "@/components/ui/button";
 import { clearCompletedTasks } from "@/app/actions/taskActions";
-import { Task } from "@prisma/client";
+import { Task, User } from "@prisma/client";
 import { useOptimistic, useState } from "react";
 import { Check, LoaderCircle } from "lucide-react";
 import Heading from "../shared/Heading";
@@ -15,7 +15,7 @@ import TaskCompletedItem from "./TaskCompletedItem";
 
 type Props = {
   tasks: Task[];
-  user: any;
+  user: User;
 };
 
 const TaskComponent = ({ tasks, user }: Props) => {
