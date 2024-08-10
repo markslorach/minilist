@@ -15,7 +15,7 @@ export async function getUser() {
 
     if (!user) {
       user = await prisma.user.create({
-        data: { email },
+        data: { email, name: clerkUser.firstName },
       });
     }
 
