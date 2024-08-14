@@ -23,6 +23,10 @@
 Deployed Link - https://minilist.vercel.app/ \
 Project Link - https://github.com/markslorach/minilist.git
 
+## Test Login Credentials
+email: test@minilist.com \
+p/w: test123
+
 ## Contact
 Mark Slorach - hello@markslorach.com
 
