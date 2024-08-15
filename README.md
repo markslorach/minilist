@@ -13,7 +13,9 @@
 * Optimistic UI for instant user feedback
 
 ## Working On
+- Setting up a Clerk webhook to sync data with db
 - Optimising code to speed up inital page load when a user is already logged in
+- Further styling
 
 ## Roadmap
 - [x] User login with Clerk Auth
