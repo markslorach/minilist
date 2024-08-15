@@ -13,7 +13,7 @@
 * Optimistic UI for instant user feedback
 
 ## Working On
-- Optimising code to speed up inital load time
+- Optimising code to speed up inital page load when a user is already logged in
 
 ## Roadmap
 - [x] User login with Clerk Auth
