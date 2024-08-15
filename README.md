@@ -12,6 +12,9 @@
 * Clear completed tasks
 * Optimistic UI for instant user feedback
 
+## Working On
+- Optimising code to speed up inital load time
+
 ## Roadmap
 - [x] User login with Clerk Auth
 - [x] CRUD operations for tasks
