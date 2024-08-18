@@ -1,10 +1,10 @@
 import prisma from "@/prisma/client";
-import { getUser } from "./user";
+import { currentUser } from "@clerk/nextjs/server";
 
 // CREATE
 export async function createTask(title: string) {
   try {
-    const user = await getUser();
+    const user = await currentUser();
 
     if (!user) return { error: "User not found" };
 
@@ -13,7 +13,7 @@ export async function createTask(title: string) {
         title: title,
         user: {
           connect: {
-            email: user?.email,
+            email: user?.emailAddresses[0].emailAddress,
           },
         },
       },
@@ -27,14 +27,14 @@ export async function createTask(title: string) {
 // READ
 export async function getTasks() {
   try {
-    const user = await getUser();
+    const user = await currentUser();
 
     if (!user) return { error: "User not found" };
 
     const tasks = await prisma.task.findMany({
       where: {
         user: {
-          email: user?.email,
+          email: user?.emailAddresses[0].emailAddress,
         },
       },
       orderBy: [{ completed: "asc" }, { xata_updatedat: "desc" }],
@@ -65,7 +65,7 @@ export async function deleteTask(taskId: string) {
     const task = await prisma.task.delete({
       where: { id: parseInt(taskId) },
     });
-    return { task }
+    return { task };
   } catch (error) {
     return { error: "Failed to delete task" };
   }
