@@ -1,7 +1,7 @@
 import { SignedIn, SignedOut, SignInButton } from "@clerk/nextjs";
-import TaskComponent from "../components/tasks/TaskComponent";
+import TaskComponent from "./components/tasks/TaskComponent";
 import { getTasks } from "@/lib/tasks";
-import Heading from "../components/shared/Heading";
+import Heading from "./components/shared/Heading";
 import { getUser } from "@/lib/user";
 import { User } from "@prisma/client";
 
