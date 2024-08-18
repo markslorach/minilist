@@ -1,7 +1,5 @@
 import Link from "next/link";
 import Heading from "./components/shared/Heading";
-import Footer from "./components/shared/Footer";
-import NavBar from "./components/shared/NavBar";
 
 const NotFound = () => {
   return (
