@@ -28,7 +28,7 @@ export default function RootLayout({
             enableSystem={false}
             defaultTheme="light"
           >
-            <main className="mx-auto flex max-w-3xl flex-col px-4 sm:px-10 md:min-h-screen">
+            <main className="mx-auto flex max-w-3xl flex-col px-4 sm:px-10 min-h-dvh">
               <NavBar />
               <div className="flex-grow">{children}</div>
               <Footer />
