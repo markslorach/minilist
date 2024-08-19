@@ -1,15 +1,11 @@
 import { SignedIn, SignedOut } from "@clerk/nextjs";
-import TaskComponent from "./components/tasks/TaskComponent";
-import { getTasks } from "@/lib/tasks";
 import Heading from "./components/shared/Heading";
-import { getUser } from "@/lib/user";
-import { User } from "@prisma/client";
 import Link from "next/link";
+import AppContainer from "./AppContainer";
+import { Suspense } from "react";
+import TaskComponentSkeleton from "./components/skeletons/TaskComponentSkeleton";
 
 export default async function Home() {
-  const user = await getUser() as User
-  const { tasks = [] } = await getTasks();
-
   return (
     <main className="py-16">
       <SignedOut>
@@ -22,7 +18,9 @@ export default async function Home() {
         </Heading>
       </SignedOut>
       <SignedIn>
-        <TaskComponent tasks={tasks} user={user} />
+        <Suspense fallback={<TaskComponentSkeleton/>}>
+          <AppContainer />
+        </Suspense>
       </SignedIn>
     </main>
   );
