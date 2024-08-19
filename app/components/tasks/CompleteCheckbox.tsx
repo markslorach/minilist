@@ -19,13 +19,13 @@ const CompleteCheckbox = ({ task }: Props) => {
     >
       <div className="text-neutral-700 dark:text-neutral-200">
         {pending && !task.completed ? (
-          <CircleCheck className="h-6 w-6" />
+          <CircleCheck className="h-6 w-6 text-blue-500" />
         ) : pending && task.completed ? (
-          <Circle className="h-6 w-6" />
+          <Circle className="h-6 w-6 text-blue-500" />
         ) : task.completed ? (
-          <CircleCheck className="h-6 w-6" />
+          <CircleCheck className="h-6 w-6 text-blue-500" />
         ) : (
-          <Circle className="h-6 w-6" />
+          <Circle className="h-6 w-6 text-blue-500" />
         )}
       </div>
     </button>
