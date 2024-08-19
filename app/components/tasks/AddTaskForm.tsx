@@ -48,7 +48,7 @@ const AddTaskForm = ({ addOptimisticTask }: Props) => {
   }
 
   return (
-    <form ref={ref} action={action} className="flex space-x-4">
+    <form ref={ref} action={action} className="flex space-x-4" autoComplete="off">
       <Input
         type="text"
         name="task"

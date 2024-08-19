@@ -70,6 +70,7 @@ const UpdateTaskForm = ({
         action(new FormData(e.currentTarget));
       }}
       className="flex w-full items-center justify-between"
+      autoComplete="off"
     >
       <div className="w-full">
         <Input name="taskId" className="hidden" value={task.id} />
