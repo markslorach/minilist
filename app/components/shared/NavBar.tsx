@@ -1,7 +1,6 @@
 import {
   SignedIn,
   SignedOut,
-  SignInButton,
   SignOutButton,
 } from "@clerk/nextjs";
 import Link from "next/link";
@@ -15,9 +14,9 @@ const NavBar = () => {
         <Check className="mr-0.5 text-blue-500" />
         minilist.io
       </Link>
-      <div className="flex items-center space-x-4">
+      <div className="flex items-center space-x-1">
         <SignedOut>
-          <SignInButton>sign in</SignInButton>
+          <Link href="/sign-in">sign in</Link>
         </SignedOut>
         <SignedIn>
           <SignOutButton>sign out</SignOutButton>

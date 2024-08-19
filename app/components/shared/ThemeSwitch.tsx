@@ -4,6 +4,7 @@ import { useTheme } from "next-themes";
 
 // Icons
 import { SunIcon, MoonIcon } from "lucide-react";
+import { Button } from "@/components/ui/button";
 
 const ThemeSwitch = () => {
   const { theme, setTheme } = useTheme();
@@ -19,13 +20,13 @@ const ThemeSwitch = () => {
 
   return (
     <>
-      <button aria-label="Toggle Theme" type="button" onClick={toggleTheme}>
+      <Button variant="ghost" size="icon" onClick={toggleTheme} className="hover:bg-transparent dark:hover:bg-transparent">
         {theme === "dark" ? (
           <SunIcon className="h-6 w-6" />
         ) : (
           <MoonIcon className="h-6 w-6" />
         )}
-      </button>
+      </Button>
     </>
   );
 };
