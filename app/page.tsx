@@ -1,4 +1,4 @@
-import { SignedIn, SignedOut, SignInButton } from "@clerk/nextjs";
+import { SignedIn, SignedOut } from "@clerk/nextjs";
 import TaskComponent from "./components/tasks/TaskComponent";
 import { getTasks } from "@/lib/tasks";
 import Heading from "./components/shared/Heading";
