@@ -36,5 +36,5 @@ p/w: test123
 Mark Slorach - hello@markslorach.com
 
 ## Screenshots
-![SCR-20240809-mawf](https://github.com/user-attachments/assets/aeb7f2ad-5f1b-4b42-88eb-571732d56c0f)
-![SCR-20240809-maxn](https://github.com/user-attachments/assets/d1d299ba-29dc-4345-a6a9-13fc63a67bcd)
+![SCR-20240827-kvtu](https://github.com/user-attachments/assets/dfe1f0f6-62ac-4f26-b767-40d8df8cc388)
+![SCR-20240827-kvsk](https://github.com/user-attachments/assets/62642cbe-b178-437d-b2f8-77d923476fad)
