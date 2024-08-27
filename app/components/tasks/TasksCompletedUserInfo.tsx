@@ -19,7 +19,7 @@ const TasksCompletedUserInfo = ({ tasksComplete }: Props) => {
   };
 
   return (
-    <p className="pb-10 text-sm text-gray-500 dark:text-gray-400">
+    <p className="pb-10 text-gray-500 dark:text-gray-400">
       {completedMessage()}
     </p>
   );

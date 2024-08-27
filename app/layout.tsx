@@ -7,7 +7,7 @@ import { Toaster } from "sonner";
 import NavBar from "./components/shared/NavBar";
 import Footer from "./components/shared/Footer";
 
-const inter = Inter({ subsets: ["latin"] });
+// const inter = Inter({ subsets: ["latin"] });
 const nunitoSans = Nunito_Sans({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
