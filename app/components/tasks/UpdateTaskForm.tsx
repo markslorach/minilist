@@ -40,7 +40,7 @@ const UpdateTaskForm = ({
     return () => {
       document.removeEventListener("keydown", handleKeyDown);
     };
-  }, [setIsUpdating]); 
+  }, [setIsUpdating]);
 
   async function action(formData: FormData) {
     const taskId = formData.get("taskId") as string;
@@ -58,7 +58,7 @@ const UpdateTaskForm = ({
     const result = await updateTaskAction(taskId, newTask);
 
     if (result?.error) {
-      toast.error(result.error)
+      toast.error(result.error);
     }
   }
 
@@ -79,7 +79,7 @@ const UpdateTaskForm = ({
           name="task"
           placeholder={task.title}
           required
-          className="border-none bg-transparent p-0 pr-2 dark:bg-transparent"
+          className="border-none bg-transparent p-0 pr-2 text-neutral-800 dark:bg-transparent dark:text-neutral-50"
           ref={inputRef}
         />
       </div>

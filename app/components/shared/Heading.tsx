@@ -6,7 +6,7 @@ interface Props {
 }
 
 const Heading = ({ children, className }: Props) => {
-  return <h2 className={cn("text-xl font-semibold", className)}>{children}</h2>;
+  return <h2 className={cn("text-xl font-semibold text-neutral-800 dark:text-neutral-50", className)}>{children}</h2>;
 };
 
 export default Heading;

@@ -20,7 +20,12 @@ const ThemeSwitch = () => {
 
   return (
     <>
-      <Button variant="ghost" size="icon" onClick={toggleTheme} className="hover:bg-transparent dark:hover:bg-transparent">
+      <Button
+        variant="ghost"
+        size="icon"
+        onClick={toggleTheme}
+        className="text-neutral-800 hover:bg-transparent dark:text-neutral-50 dark:hover:bg-transparent"
+      >
         {theme === "dark" ? (
           <SunIcon className="h-6 w-6" />
         ) : (

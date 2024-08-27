@@ -43,18 +43,23 @@ const AddTaskForm = ({ addOptimisticTask }: Props) => {
     const result = await createTaskAction(task);
 
     if (result?.error) {
-      toast.error(result.error)
+      toast.error(result.error);
     }
   }
 
   return (
-    <form ref={ref} action={action} className="flex space-x-4" autoComplete="off">
+    <form
+      ref={ref}
+      action={action}
+      className="flex space-x-4"
+      autoComplete="off"
+    >
       <Input
         type="text"
         name="task"
         placeholder="What do you want to get done today?"
         required
-        className="border-none bg-transparent px-0 dark:bg-transparent"
+        className="border-none bg-transparent px-0 text-neutral-800 dark:bg-transparent dark:text-neutral-50"
         ref={inputRef}
       />
       {/* <FormActionButton icon={Plus} label="Add Task" iconSize={28} /> */}
@@ -68,7 +73,10 @@ function SubmitButton() {
 
   return (
     <button type="submit" aria-label="Add Task" disabled={pending}>
-      <Plus className={`h-7 w-7 ${pending ? "opacity-50" : ""}`} size={28} />
+      <Plus
+        className={`h-7 w-7 ${pending ? "opacity-50" : "text-neutral-800 dark:text-neutral-50"}`}
+        size={28}
+      />
     </button>
   );
 }
