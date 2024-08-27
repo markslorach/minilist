@@ -2,7 +2,7 @@ import { Skeleton } from "@/components/ui/skeleton";
 
 const TaskComponentSkeleton = () => {
   return (
-    <div className="space-y-11">
+    <div className="space-y-12">
       <div className="space-y-2">
         <Skeleton className="h-6 md:w-3/4" />
         <Skeleton className="h-6 w-1/2 md:hidden" />
