@@ -8,7 +8,7 @@ type Props = {
 
 const TaskCompletedItem = ({ task, handleTaskComplete }: Props) => {
   return (
-    <div className="flex items-center space-x-3">
+    <div className="flex items-center space-x-2">
       <CompleteTaskForm task={task} onTaskComplete={handleTaskComplete} />
       <p className="text-neutral-800 line-through dark:text-neutral-50">
         {task.title}

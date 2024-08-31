@@ -27,7 +27,7 @@ const TaskItem = ({ task, handleDelete, onTaskComplete }: Props) => {
       value={task.id.toString()}
       className="border-none py-0.5"
     >
-      <div className="flex items-center space-x-3">
+      <div className="flex items-center space-x-2">
         <CompleteTaskForm
           task={optimisticTask}
           onTaskComplete={onTaskComplete}
