@@ -12,7 +12,7 @@ const NavBar = () => {
     <nav className="flex h-20 items-center justify-between">
       <Link href="/" className="flex items-center text-neutral-800 dark:text-neutral-50">
         <Check className="mr-0.5 text-blue-500" />
-        minilist.io
+        minilist
       </Link>
       <div className="flex items-center space-x-1">
         <SignedOut>

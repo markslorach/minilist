@@ -7,8 +7,6 @@ const AppContainer = async () => {
     const user = await getUser() as User
     const { tasks = [] } = await getTasks();
   
-
-
   return (
     <TaskComponent tasks={tasks} user={user} />
   )
