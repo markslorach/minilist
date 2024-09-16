@@ -35,7 +35,6 @@ const AddTaskForm = ({ addOptimisticTask }: Props) => {
       xata_version: 0,
       xata_createdat: new Date(),
       xata_updatedat: new Date(),
-      pending: true,
     };
 
     ref.current?.reset();
