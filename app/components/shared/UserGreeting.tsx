@@ -1,4 +1,3 @@
-import { SignedIn } from "@clerk/nextjs";
 import { capitaliseString, userGreeting } from "@/utils/helpers";
 import { Task, User } from "@prisma/client";
 import Heading from "./Heading";
@@ -15,13 +14,11 @@ const UserGreeting = ({ tasks, user }: Props) => {
 
   return (
     <section>
-      <SignedIn>
         <Heading className="pb-10">
           {user.name ? `${greeting}, ${userName}.` : `${greeting}.`}{" "}
           You have <span className="text-blue-500">{taskCount}</span>{" "}
           {taskCount === 1 ? "task" : "tasks"} pending.
         </Heading>
-      </SignedIn>
     </section>
   );
 };
