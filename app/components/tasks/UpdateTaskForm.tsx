@@ -46,6 +46,12 @@ const UpdateTaskForm = ({
     const taskId = formData.get("taskId") as string;
     const newTask = formData.get("task") as string;
 
+    // If the task is empty, reset the form and return
+    if (!newTask.trim().length) {
+      ref.current?.reset();
+      return;
+    }
+
     setIsUpdating(false);
     ref.current?.reset();
 

@@ -25,6 +25,12 @@ const AddTaskForm = ({ addOptimisticTask }: Props) => {
   async function action(formData: FormData) {
     const task = formData.get("task") as string;
 
+    // If the task is empty, reset the form and return
+    if (!task.trim().length) {
+      ref.current?.reset();
+      return;
+    }
+
     const newTask = {
       id: Math.random(),
       title: task,
